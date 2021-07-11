@@ -221,3 +221,8 @@ Still learning about this, but apparently you don't want to just run a global in
 [More about it on stack overlflow.](https://stackoverflow.com/questions/38217545/what-is-the-difference-between-pyenv-virtualenv-anaconda)
 
 [How to use pyenv to run different versions of python on your mac.](https://opensource.com/article/20/4/pyenv)
+
+
+# Useful Packages
+
+[Markdown2](https://github.com/trentm/python-markdown2)
