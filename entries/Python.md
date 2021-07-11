@@ -208,3 +208,16 @@ This is how you tell sort how to sort a dict. Or well sort of. There is an easie
 `people.sort(key=lambda person: person["name"])`
 
 It's a sort of shorthand.
+
+## Setting up Environment
+Still learning about this, but apparently you don't want to just run a global instance of Python from your path. You want an intermediary running python for you that allows you to run different versions of python for different projects, and even set up different package environements. From my understanding there are a few different options:
+
+1. Pip: Not a version manager, but the package manager python uses
+2. Pyenv: a python version manager that helps you use different releases of python with different projects
+3. Anacanda: a heavier and more sophisticated tool that seems to generally be used by data scientists more, allowing you to create different package environments (I think) and also giving you access to some very sophisticated scientifically-oriented packages. A python web developer on stack overflow said he hadn't used anaconda.
+
+[Explanation of this confusion](https://opensource.com/article/19/5/python-3-default-mac) and what to do about it.
+
+[More about it on stack overlflow.](https://stackoverflow.com/questions/38217545/what-is-the-difference-between-pyenv-virtualenv-anaconda)
+
+[How to use pyenv to run different versions of python on your mac.](https://opensource.com/article/20/4/pyenv)

@@ -36,3 +36,8 @@ It's probably because you installed django using pip3, and need to use the pytho
 `python manage.py startapp hello`
 
 Then go to your main project folder, go to `settings.py`, and add your name to the `INSTALLED_APPS` settings.
+
+#### Misc Commands of note
+`django-admin startproject projname`
+`python manage.py runserver`
+`python manage.py startup hello`
