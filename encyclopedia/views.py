@@ -1,3 +1,5 @@
+from markdown2 import Markdown
+
 from django.shortcuts import render
 
 from . import util
@@ -9,7 +11,10 @@ def index(request):
     })
 
 def entry(request, entry):
+    markdowner = Markdown()
+    content = util.get_entry(entry)
+    converted_content = markdowner.convert(content)
     return render(request, "encyclopedia/entry.html", {
-        "content": util.get_entry(entry),
+        "content": converted_content,
         "title": entry.capitalize()
     })
