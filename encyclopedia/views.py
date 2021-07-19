@@ -33,12 +33,7 @@ def search(request):
         entry = request.GET['q']
         content = util.get_entry(entry)
         if content != None:
-            converted_content = convertToMarkdown(content)
-            return render(request, "encyclopedia/entry.html", {
-                "content": converted_content,
-                "title": entry.capitalize(),
-                "form": NewSearchForm()
-            })
+            return redirect(reverse("wiki:entry", args = [entry]))
         elif entry:
             return render(request, "encyclopedia/search.html", {
                 "term": entry,
