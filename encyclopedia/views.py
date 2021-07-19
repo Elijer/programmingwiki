@@ -20,7 +20,8 @@ def index(request):
     })
 
 def entry(request, entry):
-    converted_content = convertToMarkdown(entry)
+    content = util.get_entry(entry)
+    converted_content = getMarkdownFile(content)
     return render(request, "encyclopedia/entry.html", {
         "content": converted_content,
         "title": entry.capitalize(),
@@ -29,8 +30,13 @@ def entry(request, entry):
 
 def search(request):
     if request.method == "GET":
-        # searchField = request.GET['q']
-        # if searchField != None:
+        searchField = request.GET['q']
+        if searchField:
+            content = util.get_entry(entry)
+            if content:
+                getMarkdownFile(searchField)
+
+
         
         return redirect(reverse("wiki:entry", args=[searchField]))
 
@@ -47,8 +53,7 @@ def search(request):
     else:
         return HttpResponse("entry doesn't exist -- create page for this")
 
-def convertToMarkdown(entry):
+def getMarkdownFile(content):
     markdowner = Markdown()
-    content = util.get_entry(entry)
     converted_content = markdowner.convert(content)
     return converted_content
