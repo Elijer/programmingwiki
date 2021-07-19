@@ -13,10 +13,10 @@
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
 
-                <form action="{% url 'wiki:search' 'css'%}" method = "GET">
-                    {% csrf_token %}
-                    {{ form }}
-                    <!--<input id="search-id" type="text" name="search-field" value = "" placeholder="search">-->
+                <form action="{% url 'wiki:search' %}" method = "GET">
+                    <!--{% csrf_token %}-->
+                    <!-- {{ form }}-->
+                    <input id="search-id" type="text" name="q" placeholder="search">
                     <input type="submit" value="OK">
                 </form>
 

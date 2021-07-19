@@ -1,6 +1,6 @@
 from markdown2 import Markdown
 from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.urls import reverse
 
 from django.shortcuts import render
@@ -20,31 +20,35 @@ def index(request):
     })
 
 def entry(request, entry):
-    markdowner = Markdown()
-    content = util.get_entry(entry)
-    converted_content = markdowner.convert(content)
+    converted_content = convertToMarkdown(entry)
     return render(request, "encyclopedia/entry.html", {
         "content": converted_content,
         "title": entry.capitalize(),
         "form": NewSearchForm()
     })
 
-def search(request, search):
+def search(request):
     if request.method == "GET":
-        form = NewSearchForm(request.GET)
-        if form.is_valid():
-            # task = form.cleaned_data["search"]
-            return HttpResponseRedirect(reverse("wiki:entry", args=[search]))
-        else:
-            return HttpResponse("entry doesn't exist -- create page for this")
+        # searchField = request.GET['q']
+        # if searchField != None:
+        
+        return redirect(reverse("wiki:entry", args=[searchField]))
 
-# def search()
+        # form = NewSearchForm(request.GET)
+        #if form.is_valid():
+            #searchField = form.cleaned_data["search"]
 
-# def search(request, search):
-    # content = util.get_entry(entry)
-    # return render(request, "encyclopedia/index.html", {
-       #  "entries": util.list_entries()
-    # })
+            # request.GET['q']
+            # form['search'].value()
+            # form.cleaned_data['q']
 
-    # if content == "None":
-    #    return
+            
+            # return redirect(reverse("wiki:entry", args=[searchField]))
+    else:
+        return HttpResponse("entry doesn't exist -- create page for this")
+
+def convertToMarkdown(entry):
+    markdowner = Markdown()
+    content = util.get_entry(entry)
+    converted_content = markdowner.convert(content)
+    return converted_content
