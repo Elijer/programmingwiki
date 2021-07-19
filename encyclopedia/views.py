@@ -39,6 +39,12 @@ def search(request):
                 "title": entry.capitalize(),
                 "form": NewSearchForm()
             })
+        elif entry:
+            return render(request, "encyclopedia/search.html", {
+                "term": entry,
+                "form": NewSearchForm()
+            })
+            #return HttpResponse("Hey dave!")
     # return HttpResponse("Hey dave!")
 
 def convertToMarkdown(content):
