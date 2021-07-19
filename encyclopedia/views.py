@@ -29,29 +29,9 @@ def entry(request, entry):
     })
 
 def search(request):
-    if request.method == "GET":
-        searchField = request.GET['q']
-        if searchField:
-            content = util.get_entry(entry)
-            if content:
-                convertToMarkdown(searchField)
-
-
-        
-        return redirect(reverse("wiki:entry", args=[searchField]))
-
-        # form = NewSearchForm(request.GET)
-        #if form.is_valid():
-            #searchField = form.cleaned_data["search"]
-
-            # request.GET['q']
-            # form['search'].value()
-            # form.cleaned_data['q']
-
-            
-            # return redirect(reverse("wiki:entry", args=[searchField]))
-    else:
-        return HttpResponse("entry doesn't exist -- create page for this")
+    # if request.method == "GET":
+        # searchField = request.GET['q']
+    return HttpResponse("Hey dave!")
 
 def convertToMarkdown(content):
     markdowner = Markdown()
