@@ -29,9 +29,17 @@ def entry(request, entry):
     })
 
 def search(request):
-    # if request.method == "GET":
-        # searchField = request.GET['q']
-    return HttpResponse("Hey dave!")
+    if request.method == "GET":
+        entry = request.GET['q']
+        content = util.get_entry(entry)
+        if content != None:
+            converted_content = convertToMarkdown(content)
+            return render(request, "encyclopedia/entry.html", {
+                "content": converted_content,
+                "title": entry.capitalize(),
+                "form": NewSearchForm()
+            })
+    # return HttpResponse("Hey dave!")
 
 def convertToMarkdown(content):
     markdowner = Markdown()
