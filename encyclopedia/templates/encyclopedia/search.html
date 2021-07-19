@@ -6,6 +6,15 @@
 
 {% block body %}
 
-    <p> Soich results!</p>
+    <h1> Hmm, no exact matches for "{{term}}" </h1>
+    <p> But we did find these: </p>
+    <ul>
+        {% for result in results %}
+            <li>
+                <p> {{ result }} </p>
+            </li>
+            
+        {% endfor %}
+    </ul>
 
 {% endblock %}

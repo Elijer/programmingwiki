@@ -35,10 +35,31 @@ def search(request):
         if content != None:
             return redirect(reverse("wiki:entry", args = [entry]))
         elif entry:
-            return render(request, "encyclopedia/search.html", {
-                "term": entry,
-                "form": NewSearchForm()
-            })
+            bigList = util.list_entries()
+            results = util.search_entries(bigList, entry)
+            # return HttpResponse(results)
+            if results:
+                return render(request, "encyclopedia/search.html", {
+                    "results": results,
+                    "term": entry,
+                    "form": NewSearchForm()
+                })
+            else:
+                return HttpResponse("We got no leads on that search, sorry.")
+
+            # return HttpResponse(bigList)
+            #CSSDjangoGitHTMLHTTPPythonTerminal
+            
+"""             if results:
+                #return HttpResponse(results)
+                print(results)
+                return render(request, "encyclopedia/search.html", {
+                    "results": results,
+                    "term": entry,
+                    "form": NewSearchForm()
+                }) """
+            # else:
+                # return HttpResponse("no good results for your search")
             #return HttpResponse("Hey dave!")
     # return HttpResponse("Hey dave!")
 

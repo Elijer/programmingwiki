@@ -12,6 +12,15 @@ def list_entries():
     return list(sorted(re.sub(r"\.md$", "", filename)
                 for filename in filenames if filename.endswith(".md")))
 
+def search_entries(bigList, substring):
+    bigList = list_entries()
+    newList = []
+    for item in bigList:
+        item = item.lower()
+        substring = substring.lower()
+        if substring in item:
+            newList.append(item)
+    return newList
 
 def save_entry(title, content):
     # Saves an encyclopedia entry, given its title and Markdown
