@@ -7,6 +7,18 @@
 
 {% block body %}
     <h1>No Results Found for "{{ term }}"</h1>
-    <p> The search function ignores capitalization, so that's not the problem.</p>
+    <p> This site doesn't have an entry for that yet! </p>
+    <form action="https://google.com/search" method="get">
+        <button type="submit" name="q" value= {{ term }} > Google search for {{ term }}</button>
+    </form>
+
+        <p> The search function ignores capitalization, so that's not the problem. However, you could try the following: </p>
+    <ul>
+        <li> Check for typoos </li>
+        <li> <a href = "https://www.google.com/search?q=how+much+water+should+I+drink+in+a+day&oq=how+much+water+should+I+drink+in+a+day&aqs=chrome..69i57j69i59l3j69i60l4.5066j0j4&sourceid=chrome&ie=UTF-8"> Drink water <a/> </li>
+        <li> Eat nutritious meals</li>
+        <li> Get 8 hours of sleep </li>
+        <li> Keep in touch with loved ones </li>
+    </ul>
 
 {% endblock %}
