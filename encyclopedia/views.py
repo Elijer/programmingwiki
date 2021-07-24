@@ -45,7 +45,9 @@ def search(request):
                     "form": NewSearchForm()
                 })
             else:
-                return HttpResponse("We got no leads on that search, sorry.")
+                return render(request, "encyclopedia/noResults.html", {
+                    "term": entry,
+                })
 
             # return HttpResponse(bigList)
             #CSSDjangoGitHTMLHTTPPythonTerminal

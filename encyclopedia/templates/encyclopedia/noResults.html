@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search for "{{ term }}"
+{% endblock %}
+
+
+{% block body %}
+    <h1>No Results Found for "{{ term }}"</h1>
+    <p> The search function ignores capitalization, so that's not the problem.</p>
+
+{% endblock %}
