@@ -49,22 +49,6 @@ def search(request):
                     "term": entry,
                 })
 
-            # return HttpResponse(bigList)
-            #CSSDjangoGitHTMLHTTPPythonTerminal
-            
-"""             if results:
-                #return HttpResponse(results)
-                print(results)
-                return render(request, "encyclopedia/search.html", {
-                    "results": results,
-                    "term": entry,
-                    "form": NewSearchForm()
-                }) """
-            # else:
-                # return HttpResponse("no good results for your search")
-            #return HttpResponse("Hey dave!")
-    # return HttpResponse("Hey dave!")
-
 def convertToMarkdown(content):
     markdowner = Markdown()
     converted_content = markdowner.convert(content)
