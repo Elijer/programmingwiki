@@ -43,11 +43,16 @@ def search(request):
                     "results": results,
                     "term": entry,
                     "form": NewSearchForm()
+                    # Do I need to include NewSearchForm()?
                 })
             else:
                 return render(request, "encyclopedia/noResults.html", {
                     "term": entry,
                 })
+
+def newPage(request):
+    return render(request, "encyclopedia/newPage.html")
+    
 
 def convertToMarkdown(content):
     markdowner = Markdown()

@@ -11,6 +11,9 @@ To demystify these things, here are the docs for Django's URL syntax:
 
 It has all that stuff in it.
 
+### Questions
+If a layout template that other pages use requires say, a form as a variable, do I need to then pass that in to every single page that uses that template? I don't know how else it would get the data. However, I tried omitting it, and the form still seemed to work. So the answer may be yes, but I can't explain why.
+
 ### Pain Points
 1. This sucked:
 `django decoding to str: need a bytes-like object, NoneType found`
