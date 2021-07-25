@@ -52,6 +52,9 @@ def search(request):
 
 def newPage(request):
     return render(request, "encyclopedia/newPage.html")
+
+def createPage(request):
+    return HttpResponse("trying to create a page")
     
 
 def convertToMarkdown(content):
