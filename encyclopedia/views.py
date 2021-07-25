@@ -14,8 +14,8 @@ class NewSearchForm(forms.Form):
     # priority = forms.IntegerField(label="Priority", min_value = 1, max_value = 5)
 
 class NewEntryForm(forms.Form):
-    newEntry = forms.CharField(label="Entry Title")
-    newEntryContent = forms.CharField(label="Entry Content", widget=forms.Textarea)
+    title = forms.CharField(label="Entry Title")
+    content = forms.CharField(label="Entry Content", widget=forms.Textarea)
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -61,9 +61,14 @@ def newPage(request):
 
 def createPage(request):
         if request.method == "POST":
-            return HttpResponse("hey")
+            form = NewEntryForm(request.POST)
+            if form.is_valid():
+                title = form.cleaned_data["title"]
+                content = form.cleaned_data["content"]
+                return HttpResponse("title is: " + title + " and content is: " + content)
+                # return HttpResponseRedirect(reverse("tasks:index"))
         else:
-            return HttpResponse("hey")
+            return HttpResponse("Not a valid http response for createPage method")
 
     
 
