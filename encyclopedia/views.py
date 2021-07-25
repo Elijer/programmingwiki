@@ -13,6 +13,10 @@ class NewSearchForm(forms.Form):
     search = forms.CharField(label="New Search")
     # priority = forms.IntegerField(label="Priority", min_value = 1, max_value = 5)
 
+class NewEntryForm(forms.Form):
+    newEntry = forms.CharField(label="Entry Title")
+    newEntryContent = forms.CharField(label="Entry Content")
+
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
@@ -54,7 +58,11 @@ def newPage(request):
     return render(request, "encyclopedia/newPage.html")
 
 def createPage(request):
-    return HttpResponse("trying to create a page")
+        if request.method == "POST":
+            return HttpResponse("hey")
+        else:
+            return HttpResponse("hey")
+
     
 
 def convertToMarkdown(content):
