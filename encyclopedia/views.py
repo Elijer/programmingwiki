@@ -15,7 +15,7 @@ class NewSearchForm(forms.Form):
 
 class NewEntryForm(forms.Form):
     newEntry = forms.CharField(label="Entry Title")
-    newEntryContent = forms.CharField(label="Entry Content")
+    newEntryContent = forms.CharField(label="Entry Content", widget=forms.Textarea)
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -55,7 +55,9 @@ def search(request):
                 })
 
 def newPage(request):
-    return render(request, "encyclopedia/newPage.html")
+    return render(request, "encyclopedia/newPage.html", {
+        "form": NewEntryForm()
+    })
 
 def createPage(request):
         if request.method == "POST":
