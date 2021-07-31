@@ -73,7 +73,8 @@ def createPage(request):
                 if alreadyExists:
                     return HttpResponse("page already exists")
                 else:
-                    theFile = default_storage.save(f'./entries/{title}.md', ContentFile(content));
+                    theFile = default_storage.save(f'./entries/{title}.md', ContentFile(f"# {title} \n" + content));
+                    return redirect(reverse("wiki:entry", args = [title]))
                     # theFile.save()
                     return HttpResponse("title is: " + title + " and content is: " + content)
                 # return HttpResponseRedirect(reverse("tasks:index"))
