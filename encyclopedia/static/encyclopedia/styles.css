@@ -36,3 +36,17 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+
+#editButton {
+    position: absolute;
+    right: 4em;
+    top: 1em;
+    color: light-grey;
+    background: none;
+    border: none;
+}
+
+#editButton:hover {
+    background: black;
+    color: white;
+}
