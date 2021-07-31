@@ -72,13 +72,9 @@ def createPage(request):
                 alreadyExists = util.get_entry(title)
                 if alreadyExists:
                     return HttpResponse("page already exists")
-                    # return redirect(reverse("wiki:entry", args = [title]))
                 else:
                     theFile = default_storage.save(f'./entries/{title}.md', ContentFile(f"# {title} \n" + content));
                     return redirect(reverse("wiki:entry", args = [title]))
-                    # theFile.save()
-                    return HttpResponse("title is: " + title + " and content is: " + content)
-                # return HttpResponseRedirect(reverse("tasks:index"))
         else:
             return HttpResponse("Not a valid http response for createPage method")
 
