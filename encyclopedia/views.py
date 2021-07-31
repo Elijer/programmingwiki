@@ -65,7 +65,11 @@ def createPage(request):
             if form.is_valid():
                 title = form.cleaned_data["title"]
                 content = form.cleaned_data["content"]
-                return HttpResponse("title is: " + title + " and content is: " + content)
+                alreadyExists = util.get_entry(title)
+                if alreadyExists:
+                    return HttpResponse("page already exists")
+                else:
+                    return HttpResponse("title is: " + title + " and content is: " + content)
                 # return HttpResponseRedirect(reverse("tasks:index"))
         else:
             return HttpResponse("Not a valid http response for createPage method")
