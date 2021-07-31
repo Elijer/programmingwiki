@@ -78,7 +78,12 @@ def createPage(request):
         else:
             return HttpResponse("Not a valid http response for createPage method")
 
-    
+def editPage(request, entry):
+    # content = util.get_entry(entry)
+    # converted_content = convertToMarkdown(content)
+    return render(request, "encyclopedia/edit.html", {
+        "title": entry.capitalize()
+    })
 
 def convertToMarkdown(content):
     markdowner = Markdown()
