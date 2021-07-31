@@ -1,7 +1,11 @@
+from django.core.files.storage import FileSystemStorage
 from markdown2 import Markdown
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse
+
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 
 from django.shortcuts import render
 
@@ -69,6 +73,8 @@ def createPage(request):
                 if alreadyExists:
                     return HttpResponse("page already exists")
                 else:
+                    theFile = default_storage.save(f'./entries/{title}.md', ContentFile(content));
+                    # theFile.save()
                     return HttpResponse("title is: " + title + " and content is: " + content)
                 # return HttpResponseRedirect(reverse("tasks:index"))
         else:
