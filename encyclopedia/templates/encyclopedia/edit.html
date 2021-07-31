@@ -7,9 +7,9 @@
 {% block body %}
 
     <h1>Edit this page</h1>
-        <form action="{% url 'wiki:create' %}" method="post">
+    <form action="{% url 'wiki:create' %}" method="post">
+        <textarea name="content"> {{content}} </textarea
         <input type="submit" value = "Save Changes"></input>
-    {{form}}
     </form>
 {% comment %}     <form action="{% url 'wiki:create' %}" method="post">
         {% csrf_token %}

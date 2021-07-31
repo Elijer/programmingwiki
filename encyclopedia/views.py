@@ -82,11 +82,12 @@ def createPage(request):
             return HttpResponse("Not a valid http response for createPage method")
 
 def editPage(request, entry):
-    # content = util.get_entry(entry)
+    content = util.get_entry(entry)
     # converted_content = convertToMarkdown(content)
     return render(request, "encyclopedia/edit.html", {
         "title": entry.capitalize(),
-        "form": NewEditForm()
+        "form": NewEditForm(),
+        "content": content
     })
 
 def convertToMarkdown(content):
