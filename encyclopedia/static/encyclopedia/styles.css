@@ -54,3 +54,7 @@ textarea {
 #edit-text-area {
     height: 500px;
 }
+
+#edit-entry-title-invisible {
+    display: none;
+}
