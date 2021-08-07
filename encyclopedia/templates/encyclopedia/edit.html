@@ -9,6 +9,7 @@
     <h1>Edit this page</h1>
     <form action="{% url 'wiki:change' %}" method="post">
         {% csrf_token %}
+        <input id="edit-entry-title" type="text" name="title" placeholder="search" value = {{ title }}>
         <textarea type = "text" name="content" id = "edit-text-area"> {{content}} </textarea>
         <input type="submit" value = "Create Entry"></input>
     </form>

@@ -89,7 +89,12 @@ def editPage(request, entry):
 def changeEntry(request):
     if request.method == "POST":
         content = request.POST["content"]
-        return HttpResponse(content)
+        title = request.POST["title"]
+        return HttpResponse(title)
+        #theFile = default_storage.save(f'./entries/{title}.md', ContentFile(f"# {title} \n" + content));
+        # return redirect(reverse("wiki:entry", args = [title]))
+
+        # return HttpResponse(content)
     else:
         return HttpResponse("couldn't change form")
 
