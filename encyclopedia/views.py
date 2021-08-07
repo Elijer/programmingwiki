@@ -90,9 +90,10 @@ def changeEntry(request):
     if request.method == "POST":
         content = request.POST["content"]
         title = request.POST["title"]
-        return HttpResponse(title)
-        #theFile = default_storage.save(f'./entries/{title}.md', ContentFile(f"# {title} \n" + content));
-        # return redirect(reverse("wiki:entry", args = [title]))
+        filePath = f'./entries/{title}.md'
+        default_storage.delete(filePath)
+        default_storage.save(filePath, ContentFile(content));
+        return redirect(reverse("wiki:entry", args = [title]))
 
         # return HttpResponse(content)
     else:
