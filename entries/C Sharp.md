@@ -146,6 +146,117 @@ switch (color)
 <br>
 
 # Classes!
+**Types**
+A `string` or an `int` is a type. It has his own values and functionality.
+
+A *class* represents a *custom* data-type.
+
+"In C#, the class defines the kinds of information and methods included in a custom type." -CodeAcademy
+
+Once a class is defined, you can make many instances of it, like you might make many `string` variables.
+
+**Defining a Class**
+```
+class Forest {  
+}
+```
+A class is usually put in a file of its own.
+
+
+**Using a Class**
+An instance of a class can also be called an *object*. The process of creating an instance is called *_instantiation_*.
+
+**Defining Fields**
+```
+class Forest {  
+ public string name;  
+ public int trees;  
+}
+```
+These fields will end up wth default values like `null` and `0`, since we didn't assign them a value. A `bool` default to `false`. You can find default values [here](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/default-values).
+
+Note: It's best practice to name fields in lower case.
+
+**Accessing Fields**
+Fields can be accessed with dot notation, like this:
+`forest.trees`
+
+**Defining Properties**
+A property controls the access of a field. There are two types of properties; get() and set().
+
+Basic properties for a field:
+```
+public int area;  
+public int Area  
+{  
+ get { return area; }  
+ set { area = value; }  
+}
+```
+
+It’s common to name a property with the title-cased version of its field’s name.
+
+**Getter/Setter Shorthand:the " _automatic property_"**
+Allows this 
+```
+public string size;  
+public string Size  
+{  
+ get { return size; }  
+ set { size = value; }  
+}
+```
+
+To be written as this:
+
+```
+public string size;  
+public string Size  
+{  
+ get { return size; }  
+ set { size = value; }  
+}
+```
+
+**Public vs. Private**
+These are *modifiers*, or more specifically *access modifiers*.
+
+Access modifiers can be applied to all members of a class, including **fields**, **properties**, and the rest of the members covered in this lesson.
+
+C# encourages encapsulation by defaulting class members to `private` and classes to `public`.
+
+**Get only properties**
+There are two ways to define get-only properties;
+1. Omit the set proprty
+2. Define the set property with the `private` access-modifier.
+
+Option 2 is desireable because it means that set can still be used within the class.
+
+**Class Members**
+The different attributes a class can have. There's three that I know of:
+1. Methods (functions connected to a class)
+2. Properties (get, set)
+3. Fields (data connected to a class)
+
+**Constructors**
+```
+class Forest  
+{  
+	public Forest()  
+ 	{  
+ 	}  
+}
+```
+
+**The Default Constuctor Method**
+If no constructor is defined in a class, one is automatically created for us. It takes no parameters, so it’s called a _parameterless constructor_. That’s why we have been able to instantiate new objects without errors:
+
+```
+Forest f = new Forest();
+```
+
+If a custom constructor is defined, the default (parameterless) constructer will no longer work.
+
 
 
 --------

@@ -50,3 +50,7 @@ textarea {
     background: black;
     color: white;
 }
+
+#edit-text-area {
+    height: 500px;
+}

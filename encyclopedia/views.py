@@ -21,9 +21,6 @@ class NewEntryForm(forms.Form):
     title = forms.CharField(label="Entry Title")
     content = forms.CharField(label="Entry Content", widget=forms.Textarea)
 
-class NewEditForm(forms.Form):
-    content = forms.CharField(label="Entry Content", widget=forms.Textarea)
-
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
@@ -86,9 +83,15 @@ def editPage(request, entry):
     # converted_content = convertToMarkdown(content)
     return render(request, "encyclopedia/edit.html", {
         "title": entry.capitalize(),
-        "form": NewEditForm(),
         "content": content
     })
+
+def changeEntry(request):
+    if request.method == "POST":
+        content = request.POST["content"]
+        return HttpResponse(content)
+    else:
+        return HttpResponse("couldn't change form")
 
 def convertToMarkdown(content):
     markdowner = Markdown()
