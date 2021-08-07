@@ -1,3 +1,5 @@
+from numpy import random
+
 from django.core.files.storage import FileSystemStorage
 from markdown2 import Markdown
 from django.http import HttpResponse
@@ -92,12 +94,18 @@ def changeEntry(request):
         title = request.POST["title"]
         filePath = f'./entries/{title}.md'
         default_storage.delete(filePath)
-        default_storage.save(filePath, ContentFile(content));
+        default_storage.save(filePath, ContentFile(content))
         return redirect(reverse("wiki:entry", args = [title]))
 
         # return HttpResponse(content)
     else:
         return HttpResponse("couldn't change form")
+
+def random(request):
+    allEntries = util.list_entries()
+    leng = len(allEntries)
+    randomNumb = randint(leng)
+    return HttpResponse(len(randomNumb))
 
 def convertToMarkdown(content):
     markdowner = Markdown()
