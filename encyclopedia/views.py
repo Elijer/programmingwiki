@@ -101,11 +101,12 @@ def changeEntry(request):
     else:
         return HttpResponse("couldn't change form")
 
-def random(request):
+def randomEntry(request):
     allEntries = util.list_entries()
     leng = len(allEntries)
-    randomNumb = randint(leng)
-    return HttpResponse(len(randomNumb))
+    randomNum = random.randint(leng)
+    randEntryName = allEntries[randomNum]
+    return redirect(reverse("wiki:entry", args = [randEntryName]))
 
 def convertToMarkdown(content):
     markdowner = Markdown()
