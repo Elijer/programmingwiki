@@ -29,6 +29,12 @@ textarea {
     line-height: 15px;
 }
 
+.sidebarInvisible {
+    height: 100vh;
+    padding: 15px;
+    visibility: none;
+}
+
 .sidebar {
     /* background-color: #f0f0f0; */
     background: rgb(39, 39, 39);
@@ -36,6 +42,7 @@ textarea {
     height: 100vh;
     padding: 15px;
     padding-left: 35px;
+    position: fixed;
 }
 
 #wiki-title{
