@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: white;
+    color: rgb(109, 109, 109);
 }
 
 code {
@@ -9,7 +10,7 @@ code {
 
 h1 {
     margin-top: 0px;
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
 textarea {
@@ -18,7 +19,8 @@ textarea {
 }
 
 .main {
-    padding: 10px;
+    padding: 15px;
+    padding-left: 26px;
 }
 
 .search {
@@ -28,9 +30,16 @@ textarea {
 }
 
 .sidebar {
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
+    background: rgb(39, 39, 39);
+    color: rgba(151, 151, 151, 0.089);
     height: 100vh;
-    padding: 20px;
+    padding: 15px;
+    padding-left: 35px;
+}
+
+#wiki-title{
+    color: rgb(136, 136, 136);
 }
 
 .sidebar h2 {
