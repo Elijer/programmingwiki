@@ -21,8 +21,10 @@ class NewSearchForm(forms.Form):
     # priority = forms.IntegerField(label="Priority", min_value = 1, max_value = 5)
 
 class NewEntryForm(forms.Form):
-    title = forms.CharField(label="Entry Title")
-    content = forms.CharField(label="Entry Content", widget=forms.Textarea)
+    title = forms.CharField(label="", widget=forms.TextInput
+        (attrs={'class':'new_title', 'placeholder':'Title'}))
+    content = forms.CharField(label="", widget=forms.Textarea
+        (attrs={"class": "new-entry-content", 'placeholder':'Content'}))
 
 def index(request):
     return render(request, "encyclopedia/index.html", {

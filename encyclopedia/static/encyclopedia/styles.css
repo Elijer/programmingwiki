@@ -121,3 +121,25 @@ a:hover {
     display: block;
     font-size: 20px;
 }
+
+#id_title {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.new-title {
+    display: block;
+    padding-bottom: 30px;
+}
+
+.new-entry-content {
+    display: block;
+    margin-bottom: 10px;
+    height: 500px;
+}
+
+input#new-entry-submit {
+    display: block;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
