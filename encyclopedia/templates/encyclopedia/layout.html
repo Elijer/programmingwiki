@@ -15,22 +15,22 @@
             <div class="sidebar col-lg-2 col-md-3">
                 <h2 id = "wiki-title">Wiki</h2>
 
-                <form action="{% url 'wiki:search' %}" method = "GET">
+                <form id = "sidebar-search" action="{% url 'wiki:search' %}" method = "GET">
                     <!--{% csrf_token %}-->
                     <!-- {{ form }}-->
                     <input id="search-id" type="text" name="q" placeholder="search">
                     <!--<input type="submit" value="OK">-->
                 </form>
 
-                <div>
-                    <a href="{% url 'wiki:index' %}">Home</a>
+                <div class = "sidebar-link">
+                    <a href="{% url 'wiki:index' %}" class = "sidebar-link-element">Home</a>
                 </div>
 
-                <div>
-                    <a href="{% url 'wiki:new' %}"> Create New Page </a>
+                <div class = "sidebar-link">
+                    <a href="{% url 'wiki:new' %}" class = "sidebar-link-element"> New Page </a>
                 </div>
-                <div>
-                    <a href="{% url 'wiki:random' %}"> Go 2 Rando Page </a>
+                <div class = "sidebar-link">
+                    <a href="{% url 'wiki:random' %}" class = "sidebar-link-element"> Random </a>
                 </div>
                 {% block nav %}
                 {% endblock %}

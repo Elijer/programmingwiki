@@ -29,8 +29,38 @@ textarea {
 
 .search {
     width: 100%;
-    font-size: 15px;
+    font-size: 24px;
     line-height: 15px;
+}
+
+#sidebar-search {
+    padding-top: 12px;
+    font-size: 24px;
+}
+
+#search-id {
+    width: 90%;
+}
+
+.sidebar-link {
+    padding-top: 12px;
+    font-size: 24px;
+}
+
+.sidebar-link-element {
+    color: rgb(151, 122, 231);
+}
+
+a {
+    color: rgb(151, 122, 231);
+}
+
+a:hover {
+    color: rgb(101, 78, 163);
+}
+
+.sidebar-link-element:hover {
+    color: white;
 }
 
 .sidebarInvisible {
