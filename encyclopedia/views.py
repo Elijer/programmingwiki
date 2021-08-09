@@ -16,7 +16,8 @@ from django import forms
 from . import util
 
 class NewSearchForm(forms.Form):
-    search = forms.CharField(label="New Search")
+    search = forms.CharField(label="New Search", min_length=0)
+    # min_length=2, max_length=50, blank=False, null=False
     # priority = forms.IntegerField(label="Priority", min_value = 1, max_value = 5)
 
 class NewEntryForm(forms.Form):

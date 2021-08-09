@@ -11,6 +11,6 @@
         {% csrf_token %}
         <input id="edit-entry-title-invisible" type="text" name="title" placeholder="search" value = {{ title }}></input>
         <textarea type = "text" name="content" id = "edit-text-area"> {{content}} </textarea>
-        <input type="submit" value = "Create Entry"></input>
+        <input type="submit" value = "Save Changes"></input>
     </form>
 {% endblock %}

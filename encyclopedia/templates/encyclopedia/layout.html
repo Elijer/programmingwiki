@@ -16,7 +16,7 @@
                 <form action="{% url 'wiki:search' %}" method = "GET">
                     <!--{% csrf_token %}-->
                     <!-- {{ form }}-->
-                    <input id="search-id" type="text" name="q" placeholder="search">
+                    <input id="search-id" type="text" name="q" placeholder="search" minlength="1">
                     <input type="submit" value="OK">
                 </form>
 
