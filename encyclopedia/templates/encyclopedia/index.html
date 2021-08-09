@@ -12,7 +12,7 @@
     <ul>
         {% for entry in entries %}
             <li>
-                <a href = "{% url 'wiki:entry' entry %}" > {{ entry }}</a>
+                <a class = "index-link" href = "{% url 'wiki:entry' entry %}" > {{ entry }}</a>
             </li>
             
         {% endfor %}

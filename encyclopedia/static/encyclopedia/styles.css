@@ -63,6 +63,10 @@ a:hover {
     color: white;
 }
 
+.index-link {
+    font-size: 26px;
+}
+
 .sidebarInvisible {
     height: 100vh;
     padding: 15px;
@@ -88,23 +92,32 @@ a:hover {
 }
 
 #editButton {
+    font-size: 24px;
     position: absolute;
     right: 4em;
     top: 1em;
-    color: light-grey;
     background: none;
     border: none;
 }
 
 #editButton:hover {
-    background: black;
-    color: white;
+    background: rgb(151, 122, 231);
 }
 
 #edit-text-area {
     height: 500px;
 }
 
+.edit-link:hover {
+    color: white;
+    text-decoration: none;
+}
+
 #edit-entry-title-invisible {
     display: none;
+}
+
+.save-changes {
+    display: block;
+    font-size: 20px;
 }
