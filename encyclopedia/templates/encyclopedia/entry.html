@@ -10,7 +10,8 @@
         <a class = "edit-link" href = "{% url 'wiki:edit' title %}" > Edit page </a>
     </button>
 
-
-    {{ content|safe }}
+    <div id = "normal-content">
+        {{ content|safe }}
+    </div
 
 {% endblock %}

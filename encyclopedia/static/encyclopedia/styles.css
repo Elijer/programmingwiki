@@ -1,3 +1,8 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 html {
     background: rgb(150, 150, 150);
 }
@@ -24,7 +29,12 @@ textarea {
 
 .main {
     padding: 15px;
-    padding-left: 26px;
+    padding: 26px;
+
+}
+
+#normal-content {
+    width: 90%;
 }
 
 .search {

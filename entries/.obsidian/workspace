@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Unity.md",
+            "file": "Django.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Unity.md",
+                "file": "Django.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,11 +88,14 @@
   },
   "active": "dba2d7b39b6ae9f3",
   "lastOpenFiles": [
+    "Django.md",
+    "Git.md",
     "Unity.md",
+    "Python.md",
+    "Html.md",
+    "C.md",
     "C Sharp.md",
     "CSS.md",
-    "Git.md",
-    "Untitled.md",
-    "Django.md"
+    "Untitled.md"
   ]
 }
