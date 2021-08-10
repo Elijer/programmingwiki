@@ -14,17 +14,22 @@
             <div class="sidebarInvisible col-lg-2 col-md-3">
             </div>
             <div class="sidebar col-lg-2 col-md-3">
-                <h2 id = "wiki-title">Wiki</h2>
+                
+                <div class = "sidebar-link">
+                    <a href="{% url 'wiki:index' %}" class = "sidebar-link-element">
+                        <h2 id = "wiki-title">Wiki</h2>
+                    </a>
+                </div>
 
                 <form id = "sidebar-search" action="{% url 'wiki:search' %}" method = "GET">
                     <!--{% csrf_token %}-->
                     <!-- {{ form }}-->
-                    <input id="search-id" type="text" name="q" placeholder="search">
+                    <input id="search-id" type="text" name="q" placeholder="search...">
                     <!--<input type="submit" value="OK">-->
                 </form>
 
                 <div class = "sidebar-link">
-                    <a href="{% url 'wiki:index' %}" class = "sidebar-link-element">Home</a>
+                    <a href="{% url 'wiki:index' %}" class = "sidebar-link-element"> Home </a>
                 </div>
 
                 <div class = "sidebar-link">

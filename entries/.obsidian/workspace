@@ -7,8 +7,11 @@
         "id": "dba2d7b39b6ae9f3",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "SSH.md",
+            "mode": "source"
+          }
         }
       }
     ],
@@ -65,6 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "SSH.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -84,6 +88,7 @@
   },
   "active": "dba2d7b39b6ae9f3",
   "lastOpenFiles": [
+    "Untitled.md",
     "C Sharp.md",
     "Django.md",
     "Git.md",
@@ -91,7 +96,6 @@
     "Python.md",
     "Html.md",
     "C.md",
-    "CSS.md",
-    "Untitled.md"
+    "CSS.md"
   ]
 }
