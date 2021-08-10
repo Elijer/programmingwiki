@@ -1,5 +1,3 @@
-# C Sharp
-
 # Overview
 - 'strongly-typed' language: data types must be defined, which helps avoid errors
 - 'statically-typed'
@@ -90,9 +88,8 @@ Note:  If we want to concatenate a string with something that is another data ty
 
 ### Interpolation
 The syntax for string interpolation is the following:
-```
-$"A dollar sign preceding the quotes to mark the start of the string and allowance of the interpolation of {variables} within the {string} which can contain programmatic values or, I believe, logic?"
-```
+
+`$"A normal string, but then you can put {variables} inside".`
 
 ### Getting Info about string:
 `someWord.IndexOf()` If the substring included in the single argument exists `someWord`, its index is returned. Since positioning starts at 0, the second thing in the string will return a 1. ** If it doesn’t exist in the string the method will return a -1**. If we pass it an empty string, it will return 0. If it occurs more than once, it will return the first instance.
