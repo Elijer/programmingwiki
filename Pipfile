@@ -8,6 +8,7 @@ django = "*"
 markdown2 = "*"
 numpy = "*"
 submit50 = "*"
+django-heroku = "*"
 
 [dev-packages]
 
