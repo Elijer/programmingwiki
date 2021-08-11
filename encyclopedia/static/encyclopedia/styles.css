@@ -31,6 +31,11 @@ h1 {
     padding-top: 0px;
 }
 
+#bio {
+    width: 60%;
+    font-size: 20px;
+}
+
 textarea {
     height: 90vh;
     width: 80%;
