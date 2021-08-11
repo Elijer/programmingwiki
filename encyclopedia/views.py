@@ -34,12 +34,18 @@ def index(request):
 
 def entry(request, entry):
     content = util.get_entry(entry)
-    converted_content = convertToMarkdown(content)
-    return render(request, "encyclopedia/entry.html", {
-        "content": converted_content,
-        "title": entry.capitalize(),
-        "form": NewSearchForm()
-    })
+    if content:
+        converted_content = convertToMarkdown(content)
+        return render(request, "encyclopedia/entry.html", {
+            "content": converted_content,
+            "title": entry.capitalize(),
+            "form": NewSearchForm()
+        })
+    else:
+        return render(request, "encyclopedia/noResults.html", {
+            "term": entry,
+        })
+
 
 def search(request):
     if request.method == "GET":

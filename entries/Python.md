@@ -128,7 +128,6 @@ class Point();
     def __init__(self, x, y):
         self.x = input1
         self.y = input2
-    
 p = Point(2, 8)
 print(p.x);
 printp.y
@@ -140,6 +139,7 @@ Beautiful. It has some weird stuff, but nothing that doesn't make sense. Like, I
 Brian calls this a 'magic method', probably because you're not supposed to know how it works. The first argument represents self, whatever you call it, and the proceeding arguments are taken as constructor arguments
 
 ##### A more self-referential and complex class
+
 ```
 class Flight():
     def __init__(self, capacity):
@@ -151,20 +151,15 @@ class Flight():
             return False
         self.passengers.append(name)
         return True
-
     def open_seats(self)
         return self.capacity - len(self.passengers)
-
-
 flight = Flight(3)
-
 people  = ["Harry", "Ron", "Hermione", "Ginny"]
 for person in people:
     if flight.add_passenger(person)
         print(f"Added {person} to flight successfully.")
     else:
         print(f"No available seats for {person}")
-
 ```
 
 ## Decorators
