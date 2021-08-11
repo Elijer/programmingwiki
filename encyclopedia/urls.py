@@ -12,5 +12,6 @@ urlpatterns = [
     path("create", views.createPage, name="create"),
     path("edit/<str:entry>", views.editPage, name="edit"),
     path("change", views.changeEntry, name="change"),
-    path("random", views.randomEntry, name="random")
+    path("random", views.randomEntry, name="random"),
+    path("alreadyExists/<str:entry>", views.alreadyExists, name="alreadyExists")
 ]

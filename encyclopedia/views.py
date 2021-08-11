@@ -82,12 +82,18 @@ def createPage(request):
                 content = form.cleaned_data["content"]
                 alreadyExists = util.get_entry(title)
                 if alreadyExists:
-                    return HttpResponse("page already exists")
+                    # return redirect(reverse("wiki:entry", args = [title]))
+                    return redirect(reverse("wiki:alreadyExists", args = [title]))
                 else:
                     theFile = default_storage.save(f'./entries/{title}.md', ContentFile(f"# {title} \n" + content));
                     return redirect(reverse("wiki:entry", args = [title]))
         else:
             return HttpResponse("Not a valid http response for createPage method")
+
+def alreadyExists(request, entry):
+    return render(request, "encyclopedia/alreadyExists.html", {
+        "title": entry
+    })
 
 def editPage(request, entry):
     content = util.get_entry(entry)
