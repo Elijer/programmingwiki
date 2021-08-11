@@ -11,6 +11,8 @@
     <form action="https://google.com/search" method="get">
         <button type="submit" name="q" value= {{ term }} > Google search for {{ term }}</button>
     </form>
+    <br></br>
+    <a href = "{% url 'wiki:new' %}"> Or create a new page. </a>
 
         <p> The search function ignores capitalization, so that's not the problem. However, you could try the following: </p>
     <ul>
