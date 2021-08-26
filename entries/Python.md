@@ -18,11 +18,11 @@ Everything here is familiar from a background in JS, except for possibly the `No
 
 ## Basic Usage
 
-`print("")`
-
-`name = input("This is the prompt")`
-
-`f"string {logic}"`
+```python
+print("")
+name = input("This is the prompt")`
+f"string {logic}"
+```
 
 By putting f in front of a string you can use logic in curly braces inside of the string.
 
@@ -30,14 +30,14 @@ The '#' character works the same as // (in js) in order to comment a line out. I
 
 ## Conditionals
 
-```
+```python
 if n > 0:
     print("test")
 ```
 
 Conditionals are expressed with a colon and indentation. The else if syntax looks like this:
 
-```
+```python
 if something
     do something
 elif somethingElse
@@ -50,13 +50,17 @@ else
 
 lists
 sequence of MUTABLE values
-`things = ["thingy", "thingy", "thingette"]`
-`thingOne = things[1]`
+```python
+things = ["thingy", "thingy", "thingette"]
+thingOne = things[1]
+```
 
 
 tuple
 Sequence of immutable values
-`tuple = (1, 2)`
+```python
+tuple = (1, 2)
+```
 
 set
 Sets don't keep thing in any order, and every value must be unique.
@@ -69,11 +73,13 @@ A collection of key-value pairs, also not ordered.
 list.append("newthingy");
 
 #### Sorting
-`list.sort()`
+```python
+list.sort()
+```
 presumably takes arguments to print things differently.
 
 #### Sets
-```
+```python
 s = set()
 s.add(3)
 s.remove(3)
@@ -83,39 +89,49 @@ len(s)
 
 ## For Loop
 
-```
+```python
 for i in list:
     print(i)
 ```
 
 If you don't have a list and don't want to write one, you can use range()
 
-```
+```python
 for i in range(6)
     print(i)
 ```
 
 ## Dictionaries
 
-`houses = {"harry": "gryffindor", "draco":"slytherin"}`
+```python
+houses = {"harry": "gryffindor", "draco":"slytherin"}
+```
 So yeah, commas and colons and quotes. Accessing or adding data to an existing set:
-`print(houses["Harry"])`
-`houses["Hermione"]="Gryffindor"`
+```python
+print(houses["Harry"])
+houses["Hermione"]="Gryffindor"
+```
 
 ## Functions
-```
+```python
 def square(x):
     return x * x
 ```
 
 ## Importing/Exporting things
 Define a function in one file, and then call it in another file, do this:
-`from functions import square`,
+```python
+from functions import square
+```,
 where functions is the file name and square is the variable.
 You can also do this:
-`import functions`
+```python
+import functions
+```
 and import all of the variables in a file/module, but then accessing the variables is different:
-`functions.square`
+```python
+functions.square
+```
 You have to use dot notation like that. So you can import all sorts of import modules from Python itself I think.
 You can also install functions other people make and then import them. Which has something to do with Django.
 
@@ -123,7 +139,7 @@ You can also install functions other people make and then import them. Which has
 ##### Basic Class
 Python has several types, if you want to create a new one, you use the class keyword.
 
-```
+```python
 class Point();
     def __init__(self, x, y):
         self.x = input1
@@ -140,7 +156,7 @@ Brian calls this a 'magic method', probably because you're not supposed to know 
 
 ##### A more self-referential and complex class
 
-```
+```python
 class Flight():
     def __init__(self, capacity):
         self.capacity = capacity
@@ -166,7 +182,7 @@ for person in people:
 Decorators take functions as arguments and then they return a modified version of the function.
 They belong more to the functional programming paradigm.
 
-```
+```python
 def announce(f):
     def wrapper();
         f()
@@ -179,7 +195,7 @@ def hello():
 ```
 
 ## Lambda
-```
+```python
 people = [
     {"name": "Harry", "house":"Gryffindor"},
     {"name": "Harry", "house":"Gryffindor"},
@@ -191,7 +207,7 @@ print(people)
 ```
 If you try to do this (imagine each entry in the dict is different), you will get an error, '<' not supported between dict and dict.
 
-```
+```python
 def f(person):
     return person["name"];
 
@@ -200,9 +216,87 @@ people.sort(key=f)
 
 This is how you tell sort how to sort a dict. Or well sort of. There is an easier way to do it because I guess it's a common thing. Instead of `def f(person)`, I can do this:
 
-`people.sort(key=lambda person: person["name"])`
+```python
+people.sort(key=lambda person: person["name"])
+```
 
 It's a sort of shorthand.
+
+### Try/Except
+
+The `try` block lets you test a block of code for errors.
+The `except` block lets you handle the error.
+The `finally` block lets you execute code, regardless of the result of the try- and except blocks.
+
+Normally in python when an error happens (or an *exception* as it is sometimes called)
+, python will stop altogether and generate an error message.
+
+With the `try` statement, these errors/excepts can be handled, presumably in cases when errors are expected and unavoidable, although hopefully rare.
+
+Here's an example. `try` will not succeed, as x is not defined.
+
+```python
+try:  
+ print(x)  
+except:  
+ print("An exception occurred")
+```
+
+But the program will keep going and do whatever you tell it to do if there *is* an error. In this case, we print a line to the console. But we might send an email alerting developers that something isn't right, or cancel a transaction, etc. If we *just* ran the iffy code without the `try/except` blocks, like so:
+
+```python
+print(x)
+```
+
+Then the program will crash. A much worse scenario! We can avoid it with `try/except` :)
+
+I think we can be more specific though, as there are, alas, many types of errors. Here's an example of how specific errors can be handled in a different way than general errors:
+
+```python
+try:  
+ print(x)  
+except NameError:  
+ print("Variable x is not defined")  
+except:  
+ print("Something else went wrong")
+```
+
+How do we know that a `NameError` might occur? I guess by breaking the program to begin with! If you're not breaking your program you're not discovering the edge cases. If you discover the edge cases and the errors they may cause, *then* you can start handling exceptions.
+
+**Else**
+
+We can also add an `else` block for when there are no errors.
+
+```python
+ry:  
+ print("Hello")  
+except:  
+ print("Something went wrong")  
+else:  
+ print("Nothing went wrong")
+```
+
+**finally**
+
+We can also run this block, appropriately enough after everything else, which contains code that will run regardless of whether there were errors or not.
+
+### Raising our own errors! `raise`
+We can use the `raise` keyword to raise our own errors. This is how it's done:
+```python
+x = -1  
+  
+if x < 0:  
+ raise Exception("Sorry, no numbers below zero")
+```
+
+We can be more specific than `exception` if we would like:
+
+```python
+x = "hello"  
+  
+if not type(x) is int:  
+ raise TypeError("Only integers are allowed")
+ ```
 
 ## Setting up Environment
 Still learning about this, but apparently you don't want to just run a global instance of Python from your path. You want an intermediary running python for you that allows you to run different versions of python for different projects, and even set up different package environements. From my understanding there are a few different options:
@@ -217,6 +311,8 @@ Still learning about this, but apparently you don't want to just run a global in
 
 [How to use pyenv to run different versions of python on your mac.](https://opensource.com/article/20/4/pyenv)
 
+## Pass keyword `pass`
+We can use this to execute...nothing. This can be useful when we have written a function declaration but not the function, since python is shit at commenting things out.
 
 # Useful Packages
 

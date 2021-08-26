@@ -391,6 +391,46 @@ In this case, we're recieving one in the normal way, and we're returning the oth
 
 When writing a method with out parameters, remember that the `out` parameter(s?) must be set to a value before the method ends.
 
+### The 'ref' keyword
+Apparently, by default, an argument passed into a method passes only the VALUE of the argument. So if you have, say, a global variable that you are passing into a method called every frame, there will be no continuity each instance of the called method and the variables within. Consider this"
+
+```
+public int counter = 0;
+
+public class Counting : MonoBehaviour {
+
+void Update(){
+	countUp(counter);
+}
+
+void countUp(int counter){
+	counter++;
+}
+
+}
+```
+
+In the above example, the countUp() function will simply add +1 to 0 every time it is run. If this update function is run every second and you wait 20 minutes, the public int `counter` will still be equal to 0 at the end of the twenty minutes. This is because all you are passing into the countUp function which is adding +1 is the *value* of counter, not a reference to counter itself. You can change all of this behavior by using the `ref` keyword.
+
+```
+public int counter = 0;
+
+public class Counting : MonoBehaviour {
+
+void Update(){
+	countUp(ref counter);
+}
+
+void countUp(ref int counter){
+	counter++;
+}
+
+}
+```
+
+By using the ref keyword, not dissimilar in syntactic usage to the out keyword, both before arguments in calls of countUp and before the parameter in the declaration of countUp, we can specify to C# that we want to work with the reference to a value, rather than simply the value itself.
+
+Question: Do all data types behave this way, acting as vaues when passed into functions by default, or do some act as references by default? An array or a method, for example.
 
 --------
 <br>
