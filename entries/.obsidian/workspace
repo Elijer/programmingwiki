@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "SQLite in Django.md",
+            "file": "Ssh.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SQLite in Django.md",
+                "file": "Ssh.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +97,8 @@
   },
   "active": "7e1f51fcb1e5b8ab",
   "lastOpenFiles": [
+    "Ssh.md",
+    "Git.md",
     "SQLite in Django.md",
     "Django.md",
     "Python.md",
@@ -104,8 +106,6 @@
     "SQL.md",
     "Untitled.md",
     "VSCode.md",
-    "Git.md",
-    "Javascript Libraries/Babel.md",
-    "Javascript Libraries/Untitled.md"
+    "Javascript Libraries/Babel.md"
   ]
 }
