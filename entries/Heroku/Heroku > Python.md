@@ -31,3 +31,14 @@ I have not tried it, but It seems to be saying that in order to intall the `## p
 #### Here's a nice Pitfall article for Django + Heroku
 [Link](https://bennettgarner.medium.com/deploying-django-to-heroku-procfile-static-root-other-pitfalls-e7ab8b2ba33b)
 Seems to use virtualenv instead of pipenv
+
+#### Although he actually recommends this page:
+[Link](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-python)
+
+Which is nice cause it acknowledges the psycog2-binary problems in the first line. Jk, that's just for if you're using Postgres, which I'm not.
+
+
+### Current Problem
+`Failed to find attribute 'wsgi' in 'encyclopedia'`
+
+Can't figure out if this is a silly, simple problem with the procfile, or something else. I haven't actually looked at the comon pitfalls article yet, or done everything it says, so i think that's the next step, as well as just *actually understanding* the syntax expected for the procfile.
