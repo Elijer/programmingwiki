@@ -48,6 +48,8 @@ Can't figure out if this is a silly, simple problem with the procfile, or someth
 [Link](https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/gunicorn/)
 
 
+### The Discord Server gave me this one:
+[Link](https://medium.com/@johnmontgomery2003/uploading-django-apps-to-heroku-3bb597c0628a)
 
 
 
