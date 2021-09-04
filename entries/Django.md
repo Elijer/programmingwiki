@@ -104,6 +104,22 @@ Go to your address with `/admin` and then login with the credentials we created 
 
 ```
 
+### Checking for which form is contained in POST
+view.py
+```python
+if 'bid' in request.POST:
+	return HttpResponse("true")
+```
+
+somePage.html
+```html
+<form action="{% url 'listing' listing.id %}" method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input name = "bid" id = "new-entry-submit" type="submit" value = "Submit Bid"></input>
+</form>
+```
+
 ### Question about URL abstraction in Django
 So is the thing in the single quotes, like `index` or `flight` referencing a method in `views.url` or is it referencing the *name* of a pattern in the urlpatterns object in `urls.py?`
 I guess I would guess the latter, which often has the same name as the method it calls. The last option is that it could be the actual string that specifies a URL route, but I don't think this makes sense, especially when you consider parameterized routes not actually being a real, or single, string that *could* be specified.
@@ -122,7 +138,7 @@ Why is there a comma at the end? Not a typo I guess. Supposeduly, it's because t
 
 Reverse takes the name of a particular view, and gets what the actual URL path is. This is great cause then you don't have to hardcode anything into your app, you can just use the name you've specified in `urls.py`.
 
-### Authentication
+### Users and Authentication
  Django has a lot of authentication features built in.
  
  Create a new app to manage users:
@@ -228,6 +244,11 @@ if user is not None:
 logout(request)
 ```
 
+
+----
+
+### Creating a Custom user Model
+[Here's the link in the docs](https://docs.djangoproject.com/en/2.1/topics/auth/customizing/#substituting-a-custom-user-model)
 
 ### The History of Django
 Apparently is was originally created by news organizations who would use the admin app to add news articles easily
