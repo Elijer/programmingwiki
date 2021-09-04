@@ -1,1 +1,1 @@
-web: gunicorn wiki.wsgi:encyclopedia
+web: gunicorn wiki.application

@@ -42,3 +42,7 @@ Which is nice cause it acknowledges the psycog2-binary problems in the first lin
 `Failed to find attribute 'wsgi' in 'encyclopedia'`
 
 Can't figure out if this is a silly, simple problem with the procfile, or something else. I haven't actually looked at the comon pitfalls article yet, or done everything it says, so i think that's the next step, as well as just *actually understanding* the syntax expected for the procfile.
+
+
+#### Hey Look, here's an article by Django itself!
+[Link](https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/gunicorn/)
