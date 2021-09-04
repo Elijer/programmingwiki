@@ -9,6 +9,7 @@ markdown2 = "*"
 numpy = "*"
 submit50 = "*"
 django-heroku = "*"
+gunicorn = "*"
 
 [dev-packages]
 
