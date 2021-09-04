@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 django-heroku = "*"
+gunicorn = "*"
+django = "*"
+markdown2 = "*"
 
 [dev-packages]
 
