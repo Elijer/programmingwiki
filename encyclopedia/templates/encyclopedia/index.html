@@ -6,6 +6,18 @@
 
 
 {% block body %}
+    <h1> Welcome to Code Wiki!</h1>
+    <p id = "bio"> This site is catalogue of my personal notes on various programming languages and tech. These pages are far from exhaustive, but maybe you'll find some of them helpful. </p>
+    <h2> All Pages</h2>
+    
 
+    <ul>
+        {% for entry in entries %}
+            <li>
+                <a class = "index-link" href = "{% url 'wiki:entry' entry %}" > {{ entry }}</a>
+            </li>
+            
+        {% endfor %}
+    </ul>
 
 {% endblock %}
