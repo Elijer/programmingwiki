@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Django.md",
+            "file": "Heroku/Heroku > Python.md",
             "mode": "source"
           }
         }
@@ -68,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Django.md",
+                "file": "Heroku/Heroku > Python.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +97,8 @@
   },
   "active": "d26b15b3f52977f2",
   "lastOpenFiles": [
+    "Heroku/Untitled.md",
+    "Untitled.md",
     "Django.md",
     "Git.md",
     "SQLite in Django.md",
@@ -104,8 +106,6 @@
     "Javascript.md",
     "HTTP.md",
     "Obsidian.md",
-    "Untitled.md",
-    "Javascript Libraries/Creating our own JSX transpiler.md",
-    "Ssh.md"
+    "Javascript Libraries/Creating our own JSX transpiler.md"
   ]
 }
