@@ -9,6 +9,7 @@ gunicorn = "*"
 django = "*"
 markdown2 = "*"
 dj-database-url = "*"
+numpy = "*"
 
 [dev-packages]
 

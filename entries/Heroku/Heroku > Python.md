@@ -46,3 +46,9 @@ Can't figure out if this is a silly, simple problem with the procfile, or someth
 
 #### Hey Look, here's an article by Django itself!
 [Link](https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/gunicorn/)
+
+
+
+
+
+`pip freeze > requirements.txt`
