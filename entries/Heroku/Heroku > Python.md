@@ -1,3 +1,28 @@
 # Links
 - [Pipenv to Herok](https://towardsdatascience.com/pipenv-to-heroku-easy-app-deployment-1c60b0e50996)
 - [Deploying Django on Heroku](https://devcenter.heroku.com/articles/deploying-python)
+
+We'll need to install django-heroku, but it needs postgresql to run I guess:
+```python
+brew install postgresql
+```
+
+Postgres is huge, so it'll take a while, but it solved the dependency error I was getting when i tried to install `django-heroku`.
+
+```python
+pipenv install django-heroku
+```
+
+Then add this at the end of the settings.py file to configure django-heroku
+
+```python
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
+```
+
+
+#### If this still doesn't work:
+Installing `postgresql` with homebrew worked for me, but I found another fix.
+
+I have not tried it, but It seems to be saying that in order to intall the `## psycopg2` dependency of django-heroku within a virtual env like pipenv, you[ need to do things differently than normally](http://web.archive.org/web/20140615091953/http://goshawknest.wordpress.com/2011/02/16/how-to-install-psycopg2-under-virtualenv/)

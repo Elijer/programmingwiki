@@ -1,1 +1,1 @@
-web: gunicorn wiki:encyclopedia
+web: gunicorn wiki.encyclopedia
