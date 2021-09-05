@@ -15,3 +15,10 @@ numpy = "*"
 
 [requires]
 python_version = "3.9"
+
+[scripts]
+mm = "python manage.py makemigrations"
+mi = "python manage.py migrate"
+run = "python manage.py runserver"
+sh = "python manage.py shell"
+su = "python manage.py createsuperuser"
