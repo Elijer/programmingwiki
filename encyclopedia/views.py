@@ -108,6 +108,9 @@ def changeEntry(request):
     if request.method == "POST":
         content = request.POST["content"]
         title = request.POST["title"]
+
+        util.save_to_db(title, content)
+
         filePath = f'./entries/{title}.md'
         default_storage.delete(filePath)
         default_storage.save(filePath, ContentFile(content))

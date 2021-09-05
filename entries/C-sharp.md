@@ -1,5 +1,4 @@
 # C Sharp
-hey
 
 - 'strongly-typed' language: data types must be defined, which helps avoid errors
 - 'statically-typed'

@@ -24,14 +24,17 @@ def search_entries(bigList, substring):
             newList.append(item)
     return newList
 
-def save_entry(title, content):
-    # Saves an encyclopedia entry, given its title and Markdown
-    # content. If an existing entry with the same title already exists,
-    # it is replaced.
+def save_to_db(title, content):
     newEntry = Entry(
         title = title,
         content = content
     )
+    newEntry.save()
+
+def save_entry(title, content):
+    # Saves an encyclopedia entry, given its title and Markdown
+    # content. If an existing entry with the same title already exists,
+    # it is replaced.
 
     newEntry.save();
 
