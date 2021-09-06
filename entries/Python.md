@@ -299,7 +299,9 @@ if not type(x) is int:
  ```
 
 ## Setting up Environment
-Still learning about this, but apparently you don't want to just run a global instance of Python from your path. You want an intermediary running python for you that allows you to run different versions of python for different projects, and even set up different package environements. From my understanding there are a few different options:
+You don't want to just run a global instance of Python from your path. This can cause all sorts of issues, since (for Mac) your OS also relies on the global instance of Python. If you try and install packages to the global instance, you'll find that they'll usually get lost. 
+
+You need an intermediary running python for you that allows you to run different versions of python for different projects, and even set up different package environements. From my understanding there are a few different options:
 
 1. Pip: Not a version manager, but the package manager python uses
 2. Pyenv: a python version manager that helps you use different releases of python with different projects
@@ -310,6 +312,29 @@ Still learning about this, but apparently you don't want to just run a global in
 [More about it on stack overlflow.](https://stackoverflow.com/questions/38217545/what-is-the-difference-between-pyenv-virtualenv-anaconda)
 
 [How to use pyenv to run different versions of python on your mac.](https://opensource.com/article/20/4/pyenv)
+
+This has become especially problematic as Python 2.X has been deprecated, since some deprecated tools/software still rely on Python 2, but anything new being built should use Python 3. Without properly installing an intermediary python environment, you'll also find that the packages you install are installed into a void! For that reason, anything other than vanilla Python is pretty much impossible to use without an intermediary python environment.
+
+The easiest quick-start to Python that Noah has found has been Pyenv. 
+
+At the time of writing, these were the steps - 
+
+1. Download and install Pyenv through Homebrew (Note that both pyenv and pyenv-virtualenv are required). 
+```
+brew update
+brew install pyenv
+brew install pyenv-virtualenv
+```
+
+2. Set-up Pyenv through your environment variables (PATH, etc) so that your computer knows how to reach Pyenv. This is different for `bash` and `zsh`, but luckily the [`pyenv` documentation on their `README` is pretty good.](https://github.com/pyenv/pyenv#installation). 
+> Note that the documentation is extremely verbose. Read carefully and be patient. If you followed the above steps for Homebrew, Skip to Installation/2. Configure your shell's environment for Pyenv. Make sure to follow both steps, i) and ii). 
+
+3. Restart your terminal for the changes to take effect. 
+
+4. Run `pyenv install x.x.x` to install the version, where `x.x.x` is your version number. Version `3.7.2` is stable and recommended at time of writing. 
+
+5. [See here for a great guide on `pyenv` basic usage](https://gist.github.com/josemarimanio/9e0c177c90dee97808bad163587e80f8#basic-usage)
+
 
 ## Pass keyword `pass`
 We can use this to execute...nothing. This can be useful when we have written a function declaration but not the function, since python is shit at commenting things out.
