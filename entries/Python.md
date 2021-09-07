@@ -311,7 +311,7 @@ Still learning about this, but apparently you don't want to just run a global in
 
 [How to use pyenv to run different versions of python on your mac.](https://opensource.com/article/20/4/pyenv)
 
-This has become especially problematic as Python 2.X has been deprecated, since some deprecated tools/software still rely on Python 2, but anything new being built should use Python 3. Without properly installing an intermediary python environment, you'll also find that the packages you install are installed into a void! For that reason, anything other than vanilla Python is pretty much impossible to use without an intermediary python environment.
+This has become especially problematic as Python 2.X has been deprecated, since some deprecated tools/software still rely on Python 2, but anything new being built should use Python 3. Without properly installing an intermediary python environment, you'll also find that the packages you install are installed into a void! Pip says they're installed, your Python program says they aren't, and you're left extremely frustrated. For that reason, anything other than vanilla Python is pretty much impossible to use without an intermediary python environment.
 
 The easiest quick-start to Python that Noah has found has been Pyenv. Pyenv is more lightweight than Anaconda, and easier to set up as well.
 
