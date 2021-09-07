@@ -315,7 +315,7 @@ You need an intermediary running python for you that allows you to run different
 
 This has become especially problematic as Python 2.X has been deprecated, since some deprecated tools/software still rely on Python 2, but anything new being built should use Python 3. Without properly installing an intermediary python environment, you'll also find that the packages you install are installed into a void! For that reason, anything other than vanilla Python is pretty much impossible to use without an intermediary python environment.
 
-The easiest quick-start to Python that Noah has found has been Pyenv. 
+The easiest quick-start to Python that Noah has found has been Pyenv. Pyenv is more lightweight than Anaconda, and easier to set up as well.
 
 At the time of writing, these were the steps - 
 
@@ -327,13 +327,18 @@ brew install pyenv-virtualenv
 ```
 
 2. Set-up Pyenv through your environment variables (PATH, etc) so that your computer knows how to reach Pyenv. This is different for `bash` and `zsh`, but luckily the [`pyenv` documentation on their `README` is pretty good.](https://github.com/pyenv/pyenv#installation). 
-> Note that the documentation is extremely verbose. Read carefully and be patient. If you followed the above steps for Homebrew, Skip to Installation/2. Configure your shell's environment for Pyenv. Make sure to follow both steps, i) and ii). 
+If you followed the above steps for Homebrew, Skip to Installation/2. Configure your shell's environment for Pyenv. Make sure to follow both steps, i) and ii). This way, Pyenv will start whenever you open your terminal. 
+> Note that the documentation is extremely verbose. Read carefully and be patient - they get to the instructions in general, but an explanation for what's going on is also buried in there as well. 
 
 3. Restart your terminal AND your IDE for the changes to take effect. 
 
-4. Run `pyenv install x.x.x` to install the version, where `x.x.x` is your version number. Version `3.7.2` is stable and recommended at time of writing. 
+4. Run `pyenv install x.x.x` to install the version, where `x.x.x` is the version number you desire. Version `3.7.2` is stable and recommended at time of writing. 
 
 5. [See here for a great guide on `pyenv` basic usage](https://gist.github.com/josemarimanio/9e0c177c90dee97808bad163587e80f8#basic-usage)
+
+Some final notes on using Python 
+- I found that I had to uninstall my Python extensions on Visual Studio, since they were telling VS to read the wrong version of Python. 
+- I still had some issues with my Pip modules not being recognized despite being downloaded. If this is the case for you as well, I believe I fixed it by using `pipenv`, and is oftentimes recommended to be used in conjunction. [Here is the guide I used](https://www.rootstrap.com/blog/how-to-manage-your-python-projects-with-pipenv-pyenv/) 
 
 
 ## Pass keyword `pass`
