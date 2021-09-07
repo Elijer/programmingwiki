@@ -332,7 +332,7 @@ If you followed the above steps for Homebrew, Skip to `Installation/2. Configure
 
 4. Run `pyenv install x.x.x` to install the version, where `x.x.x` is the version number you desire. Version `3.7.2` is stable and recommended at time of writing. 
 
-5. [See here for a great guide on `pyenv` basic usage](https://gist.github.com/josemarimanio/9e0c177c90dee97808bad163587e80f8#basic-usage)
+5. To actually use `pyenv`, [see here for a great guide on `pyenv` basic usage](https://gist.github.com/josemarimanio/9e0c177c90dee97808bad163587e80f8#basic-usage)
 
 Some final notes on using Python 
 - I found that I had to uninstall my Python extensions on Visual Studio, since they were telling VS to read the wrong version of Python. 
