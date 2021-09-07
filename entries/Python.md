@@ -299,9 +299,7 @@ if not type(x) is int:
  ```
 
 ## Setting up Environment
-You don't want to just run a global instance of Python from your path. This can cause all sorts of issues, since (for Mac) your OS also relies on the global instance of Python. If you try and install packages to the global instance, you'll find that they'll usually get lost. 
-
-You need an intermediary running python for you that allows you to run different versions of python for different projects, and even set up different package environements. From my understanding there are a few different options:
+Still learning about this, but apparently you don't want to just run a global instance of Python from your path. You want an intermediary running python for you that allows you to run different versions of python for different projects, and even set up different package environements. From my understanding there are a few different options:
 
 1. Pip: Not a version manager, but the package manager python uses
 2. Pyenv: a python version manager that helps you use different releases of python with different projects
