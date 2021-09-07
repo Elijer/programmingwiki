@@ -325,7 +325,7 @@ brew install pyenv-virtualenv
 ```
 
 2. Set-up Pyenv through your environment variables (PATH, etc) so that your computer knows how to reach Pyenv. This is different for `bash` and `zsh`, but luckily the [`pyenv` documentation on their `README` is pretty good.](https://github.com/pyenv/pyenv#installation). 
-If you followed the above steps for Homebrew, Skip to Installation/2. Configure your shell's environment for Pyenv. Make sure to follow both steps, i) and ii). This way, Pyenv will start whenever you open your terminal. 
+If you followed the above steps for Homebrew, Skip to `Installation/2. Configure your shell's environment for Pyenv`. Make sure to follow both steps, i) and ii). This way, Pyenv will start whenever you open your terminal. 
 > Note that the documentation is extremely verbose. Read carefully and be patient - they get to the instructions in general, but an explanation for what's going on is also buried in there as well. 
 
 3. Restart your terminal AND your IDE for the changes to take effect. 
