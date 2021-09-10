@@ -13,6 +13,8 @@ from django.shortcuts import render
 
 from django import forms
 
+from encyclopedia.models import Entry
+
 from . import util
 
 class NewSearchForm(forms.Form):
@@ -27,6 +29,18 @@ class NewEntryForm(forms.Form):
         (attrs={"class": "new-entry-content", 'placeholder':'Content'}))
 
 def index(request):
+
+    # Takes files and changes them into DB rows
+    entries = util.list_entries()
+    for entry in entries:
+        content = util.get_entry(entry)
+        util.save_to_db(entry, content)
+
+    # Takes DB rows and turns them into entries
+    files = Entry.objects.all()
+    for file in files:
+        util.save_entry(file.title, file.content)
+
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
         "form": NewSearchForm()

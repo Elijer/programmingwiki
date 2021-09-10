@@ -14,6 +14,13 @@ def list_entries():
     return list(sorted(re.sub(r"\.md$", "", filename)
                 for filename in filenames if filename.endswith(".md")))
 
+def refresh_DB():
+    entries = list_entries()
+    for entry in entries:
+        content = util.get_entry(entry)
+        save_to_db(entry, content)
+    return True
+
 def search_entries(bigList, substring):
     bigList = list_entries()
     newList = []
