@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "SQL.md",
+            "file": "SQLite in Django.md",
             "mode": "source"
           }
         }
@@ -48,11 +48,13 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "548dd7b686fc8e13",
@@ -68,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SQL.md",
+                "file": "SQLite in Django.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,15 +99,15 @@
   },
   "active": "d26b15b3f52977f2",
   "lastOpenFiles": [
-    "SQL.md",
-    "Heroku/Untitled.md",
-    "Untitled.md",
-    "Django.md",
-    "Git.md",
     "SQLite in Django.md",
-    "VSCode.md",
-    "Javascript.md",
-    "HTTP.md",
-    "Obsidian.md"
+    "Django.md",
+    "SQL.md",
+    "Ssh.md",
+    "NFTs.md",
+    "Mythical JS-First HTML.md",
+    "C-sharp.md",
+    "Css.md",
+    "Untitled.md",
+    "Heroku/Untitled.md"
   ]
 }

@@ -10,6 +10,7 @@
 	1) [[SQLite in Django#Views py | Views.py]]
 	2) [[SQLite in Django#HTML Templates | HTML Templates]]
 	3) [[#Adding Data | Adding Data]]
+	4) [[SQLite in Django#Providing Initial Data for Models | Providing Initial Data for Models]]
 5) [[SQLite in Django#Using the Admin App | The Admin App]]
 
 
@@ -339,6 +340,42 @@ Django is actually creating a many-to-many table *for* us here in SQL, behind th
 
 If you want to be able to specify ManyToMany relation without making it required just use `blank=True`:  ManyToMany can't be null, but they can be blank.
 
+------
+
+<br>
+
+### OneToOneRelationships
+[Here's the link to the django docs about this one.](https://docs.djangoproject.com/en/3.2/topics/db/examples/one_to_one/)
+
+It looks like this can be a good option for when you want to display info from a related table in the HTML -- this can be pretty complicated with OneToMany and ManyToMany relationships. So if you don't *need* the complexity they offer, better to avoid it.
+
+#### Checking if an object has a OneToOne
+The default for a OneToOne is `Null=True`, meaning that it can be null. Of course, if you try to access a null field on an object, you'll crash Django without exception handling.
+
+You may ask, can't I just do this?
+`Object.OneToOne.exists(`
+or this?
+`Object.OntToOne.count() > 0`
+
+Django's answer is unfortunately, no. No you may not. Why? I have no idea.
+
+Instead, you can do exception handling for OneToOne's like this:
+```python
+>>> from django.core.exceptions import ObjectDoesNotExist
+>>> try:
+>>>     p2.restaurant
+>>> except ObjectDoesNotExist:
+>>>     print("There is no restaurant here.")
+There is no restaurant here.
+```
+
+But it's much less verbose to just use a weird operator-like Django function called `hasattr()`. Again, This is all in the OneToOne docs. Usage of the hasattr() function looks like this:
+```python
+if hasattr(listing, 'leadingBid'):
+```
+
+Which will resolve to exactly what `listing.leadingBid.exists()` would, except that, again, you can't do it that way.
+
 <br>
 
 ---
@@ -488,6 +525,58 @@ Take this passenger, take their set of flights, add a new flight to it.
  
  <br>
 
+-----
+
+
+<br>
+
+
+### Providing Initial Data for Models
+[Link in Django Docs](https://docs.djangoproject.com/en/3.2/howto/initial-data/)
+
+You may run into a problem where you want your app, even fresh out of the box, have certain data. For me, that problem looks like this: I want my listings in an auction app to have categories, but I don't actually want to build a way for the user to create the Category information. Not yet anyways. I just want the categories to exist as a set list of information that doesn't really need to change, but may be referred to by foreign keys.
+
+Django has a solution this problem, called "fixtures".
+
+A fixture can be a .json or YAML file in the 'fixtures' folder (which you may have to make) inside of an app directory.
+
+A fixture with a single object might look like this:
+
+```json
+[
+
+	{
+
+	"model": "auctions.category",
+
+	"pk": 1,
+
+	"fields": {
+
+		"title": "Pets",
+
+		"description": "Dogs, cats, turtles hamsters - here you will find creatures of all kinds."
+
+	}
+
+	},
+]
+```
+
+And then, to RUN that fixture (and add it to your SQL db), run this command:
+```bash
+manage.py loaddata {{fixture_name}}
+```
+
+Which should return output that looks like this:
+
+```bash
+Installed 1 object(s) from 1 fixture(s)
+```
+
+If you are creating multiple rows of data (json objects) in your fixture file, don't forget to change the pk (primary key) listed, otherwise they will just overwrite each other and you'll end up with just one.
+
+Instead of writing a json (or YAML) file, you can also use a command called `datadump` or something, which I believe uses your existing SQL data to create a fixture file.
 
 ------
  

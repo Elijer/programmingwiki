@@ -125,3 +125,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
+
+# Auto key setting. Got it from here:
+# https://stackoverflow.com/questions/66971594/auto-create-primary-key-used-when-not-defining-a-primary-key-type-warning-in-dja
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 

@@ -13,6 +13,8 @@ from django.shortcuts import render
 
 from django import forms
 
+from encyclopedia.models import Entry
+
 from . import util
 
 class NewSearchForm(forms.Form):
@@ -27,6 +29,18 @@ class NewEntryForm(forms.Form):
         (attrs={"class": "new-entry-content", 'placeholder':'Content'}))
 
 def index(request):
+
+    # Takes files and changes them into DB rows
+    entries = util.list_entries()
+    for entry in entries:
+        content = util.get_entry(entry)
+        util.save_to_db(entry, content)
+
+    # Takes DB rows and turns them into entries
+    files = Entry.objects.all()
+    for file in files:
+        util.save_entry(file.title, file.content)
+
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
         "form": NewSearchForm()
@@ -85,7 +99,8 @@ def createPage(request):
                     # return redirect(reverse("wiki:entry", args = [title]))
                     return redirect(reverse("wiki:alreadyExists", args = [title]))
                 else:
-                    theFile = default_storage.save(f'./entries/{title}.md', ContentFile(f"# {title} \n" + content));
+                    util.save_entry(title, content)
+                    # theFile = default_storage.save(f'./entries/{title}.md', ContentFile(f"# {title} \n" + content));
                     return redirect(reverse("wiki:entry", args = [title]))
         else:
             return HttpResponse("Not a valid http response for createPage method")
@@ -107,9 +122,14 @@ def changeEntry(request):
     if request.method == "POST":
         content = request.POST["content"]
         title = request.POST["title"]
-        filePath = f'./entries/{title}.md'
-        default_storage.delete(filePath)
-        default_storage.save(filePath, ContentFile(content))
+
+        util.save_entry(title, content)
+
+        # util.save_to_db(title, content)
+
+        # filePath = f'./entries/{title}.md'
+        # default_storage.delete(filePath)
+        # default_storage.save(filePath, ContentFile(content))
         return redirect(reverse("wiki:entry", args = [title]))
 
         # return HttpResponse(content)
