@@ -219,7 +219,36 @@ Because remember? The user is an automatic object attached to the request.
 
 Logout stuff: (1:52:00 in SQL lecture)
 
-### user object
+### Creating a Drop-down Field to a form in Django:
+In django, this type of field is called "Select".
+
+[Here's a link to a tutorial I used.](http://www.learningaboutelectronics.com/Articles/How-to-create-a-drop-down-list-in-a-Django-form.php)
+
+Define an object that defines the list itself, either in the form or outside of it:
+
+```python
+CATEGORIES = [
+
+('Vehicles', 'Vehicles'),
+
+('Pets', 'Pets'),
+
+('Housing', 'Housing')
+
+]
+```
+
+And then add the drop-down-field to your form:
+
+```python
+category = forms.CharField(label="",
+widget=forms.Select(choices=CATEGORIES))
+```
+
+
+<br>
+
+### User object
 ```python
 
 # import user object
