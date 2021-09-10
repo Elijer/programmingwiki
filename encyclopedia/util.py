@@ -35,8 +35,28 @@ def save_entry(title, content):
     # Saves an encyclopedia entry, given its title and Markdown
     # content. If an existing entry with the same title already exists,
     # it is replaced.
+    if Entry.objects.filter(ref=title.lower()).exists():
+        e = Entry.objects.get(ref=title.lower())
+        e.content = content
+        e.save()
+    else:
+        newEntry = Entry(
+            ref = title.lower(),
+            title = title,
+            content = content
+        )
+
+        newEntry.save();
+
+
+    newEntry = Entry(
+        ref = title.lower(),
+        title = title,
+        content = content
+    )
 
     newEntry.save();
+
 
     filename = f"entries/{title}.md"
     if default_storage.exists(filename):
