@@ -25,39 +25,27 @@ def search_entries(bigList, substring):
     return newList
 
 def save_to_db(title, content):
-    newEntry = Entry(
-        title = title,
-        content = content
-    )
-    newEntry.save()
-
-def save_entry(title, content):
-    # Saves an encyclopedia entry, given its title and Markdown
-    # content. If an existing entry with the same title already exists,
-    # it is replaced.
     if Entry.objects.filter(ref=title.lower()).exists():
         e = Entry.objects.get(ref=title.lower())
         e.content = content
         e.save()
     else:
-        newEntry = Entry(
+        e = Entry(
             ref = title.lower(),
             title = title,
             content = content
         )
+    e.save();
 
-        newEntry.save();
+def save_entry(title, content):
+    # Saves an encyclopedia entry, given its title and Markdown
+    # content. If an existing entry with the same title already exists,
+    # it is replaced.
 
+    # Save to SQL db
+    save_to_db(title, content)
 
-    newEntry = Entry(
-        ref = title.lower(),
-        title = title,
-        content = content
-    )
-
-    newEntry.save();
-
-
+    # Save file to directory
     filename = f"entries/{title}.md"
     if default_storage.exists(filename):
         default_storage.delete(filename)

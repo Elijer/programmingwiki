@@ -109,11 +109,13 @@ def changeEntry(request):
         content = request.POST["content"]
         title = request.POST["title"]
 
-        util.save_to_db(title, content)
+        util.save_entry(title, content)
 
-        filePath = f'./entries/{title}.md'
-        default_storage.delete(filePath)
-        default_storage.save(filePath, ContentFile(content))
+        # util.save_to_db(title, content)
+
+        # filePath = f'./entries/{title}.md'
+        # default_storage.delete(filePath)
+        # default_storage.save(filePath, ContentFile(content))
         return redirect(reverse("wiki:entry", args = [title]))
 
         # return HttpResponse(content)
