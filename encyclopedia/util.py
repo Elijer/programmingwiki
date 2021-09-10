@@ -19,7 +19,6 @@ def refresh_DB():
     for entry in entries:
         content = util.get_entry(entry)
         save_to_db(entry, content)
-    return True
 
 def search_entries(bigList, substring):
     bigList = list_entries()
