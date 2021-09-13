@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "d26b15b3f52977f2",
+        "id": "1bbc38e2bf34313e",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "SQLite in Django.md",
+            "file": "Django.md",
             "mode": "source"
           }
         }
@@ -48,13 +48,11 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "548dd7b686fc8e13",
@@ -70,7 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SQLite in Django.md",
+                "file": "Django.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,17 +95,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "d26b15b3f52977f2",
+  "active": "1bbc38e2bf34313e",
   "lastOpenFiles": [
-    "SQLite in Django.md",
     "Django.md",
+    "CSS.md",
+    "Heroku/Heroku > Python.md",
+    "SQLite in Django.md",
     "SQL.md",
     "Ssh.md",
     "NFTs.md",
     "Mythical JS-First HTML.md",
     "C-sharp.md",
-    "Css.md",
-    "Untitled.md",
-    "Heroku/Untitled.md"
+    "Css.md"
   ]
 }

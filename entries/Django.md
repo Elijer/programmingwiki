@@ -35,6 +35,8 @@ It's probably because you installed django using pip3, and need to use the pytho
 ### What NOT to do in Django
 1) Write comments inside of your HTML templates. Don't be fooled -- these don't get used like normal HTML files. So when you write comments in them, it could break your code. Thanks Django -.-
 
+Edit: Not actually positive about this, I just had one bad experience.
+
 
 ### Creating an app
 `python manage.py startapp hello`
@@ -274,10 +276,145 @@ logout(request)
 ```
 
 
-----
+<br>
+
+-----
+
+<br>
+
+# Style in Django ( CSS , SCSS )
+Django has a particular way of serving CSS files, which it usually does out of a 'static' directory, which is pointed to using a variable in settings.py, like this:
+
+```python
+# settings.py
+STATIC_URL = '/static/'
+```
+
+And then at the top of your main HTML template, you have to load the files from the directory we just specified, like this:
+
+```python
+# layout.html
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>{% block title %}Auctions{% endblock %}</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+```
+
+As you can see, we have also done some special stuff inside of our `<link>` tag where we load the css. I guess we're just using python's special URL abstraction syntax -- the 'static' keyword likely tells this html file that we want to look in that same directory we've specified in settings.py
+
+#### What if we want to use SCSS?
+I found that this guide, [How to Easily Use SASS/SCSS with Django](https://engineertodeveloper.com/how-to-easily-use-sass-scss-with-django/), was a pretty easy way to use SCSS with django, although I'm sure there are other ways as well.
+
+A couple tips for following the guide:
+
+1) When they tell you to put this in your `settings.py`:
+```python
+STATIC_ROOT = BASE_DIR / 'static'
+```
+
+They don't mean as is. At first I thought `BASE_DIR` was some sort of default variable, but if it is, it didn't work for me. II had to write out the path like this:
+
+```python
+STATIC_ROOT = 'auctions/static/'
+```
+
+Where `auctions` is the name of my app in my Django project, and static is the folder where I'm keeping my css
+
+2) Don't forget to change your file extension for your css to `.scss`
+
+3) When you change the `{% load static %}` to `{% load sass_tags %}`, make sure you also change the `<link>` tag that links to your SCSS. You have to change two things about it:
+- css extension to scss
+- `{% static` to `{% sass_src`
+
+So that it ends up looking like this:
+
+```html
+<link href="{% sass_src 'auctions/styles.scss' %}" rel="stylesheet">
+```
+
+Lastly, you will probably have to restart your local serving for these changes to all be reflected. Hope it works!
+
+<br>
+
+-----
+
+<br>
+
+# Styling Fields
+
+So there's an awful, terrible way to style a field and then there's a hopefully better way.
+
+1) **Here's the awful way:**
+
+```python
+category = forms.CharField(label="Category",
+widget=forms.Select(attrs={'class': 'some-class'}, choices=CATEGORIES))
+```
+
+Ugh. Yes, all that just to add a class. Disgusting. A hidden bonus -- it doesn't work for all field types.
+
+<br>
+
+2) **Here's the hopefully better way:**
+
+```python
+starting_bid = forms.IntegerField(label="Starting Bid")
+starting_bid.widget.attrs.update({'class': 'some-class'})
+```
+
+
+
+<br>
+
+-----
+
+<br>
+
+# Javascript in Django
+1) Create a javascript file in static/appname directory (right next to your css files)
+2) Go to your layout.html file that other html files extend and add this inside the head tag:
+```html
+{% block script %}
+{% endblock %}
+```
+3) In your html view, put this at the top:
+```html
+{% load static %}
+```
+And this at the bottom below the `{% endblock %}` tag:
+```html
+{% block script %}
+<script src="{% static 'auctions/{name_of_your_file}.js' %}"></script>
+{% endblock %}
+```
+And that should do it.
+
+
+<br>
+
+-----
+
+<br>
 
 ### Creating a Custom user Model
 [Here's the link in the docs](https://docs.djangoproject.com/en/2.1/topics/auth/customizing/#substituting-a-custom-user-model)
+
+<br>
+
+-----
+
+<br>
 
 ### The History of Django
 Apparently is was originally created by news organizations who would use the admin app to add news articles easily
