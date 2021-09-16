@@ -16,7 +16,7 @@ How To Link Ladder
  | Login to droplet console     | `ssh jah@157.230.2.209`            |       |
  | Activate virtual environment | `source {env name}/bin/activate` | run inside 'environments' directory  |
  | Reboot                       | `sudo reboot`                      |       |
- |                              |                                    |       |
+ |     Exit server                         |               `exit`                     |       |
  
 
 
@@ -96,7 +96,7 @@ Okay, looks like there are two things in this new directory: `manage.py` and the
 - Ultimately, I'm not getting the error when i try to reinstall mysqlclient? So I think it should be okay.
 
 > Create the Database
-- login: `-   sudo mysql -u root
+- login: `-   sudo mysql -u root`
 - Okay I'm in the mysql server! Nice!
 - Let's see the databases we have:
 - `SHOW DATABASES;`
@@ -105,7 +105,7 @@ Okay, looks like there are two things in this new directory: `manage.py` and the
 - Now we create a new database, called `blog_data`. But of course we could call it anything:
 - `CREATE DATABASE blog_data;``
 - Okay so we've been doing this stuff with root, but now we're going to create a user with limited priveledges, just like for the SSH server. I'm going to call this one djangouser too, which hopefully helps me not get it confused with other stuff. Don't forget to change the password to whateve you want.
-- `CREATE USER 'djangouser'@'%' IDENTIFIED WITH mysql_native_password BY 'voodoo';``
+- `CREATE USER 'djangouser'@'%' IDENTIFIED WITH mysql_native_password BY 'voodoo';`
 - Then we set up their priveleges: `GRANT ALL ON blog_data.* TO 'djangouser'@'%';`
 - And do something weird, called "flushing priveleges", which I guess just refreshes user priveleges so that the ones we just made get reflected.
 - Okay done! Now we can exit with one of these commands: `EXIT` or typing ctr + D
@@ -130,14 +130,19 @@ Okay, looks like there are two things in this new directory: `manage.py` and the
 - I guess I'll probably copy this directory so I can use it as a template? I don't *really* want to have to do all that again. However, you may not be able to simply copy all parts of it, as we were briefly in the etc. folder doing things that would affect the whole server's state. So be careful and skim the tutorial, think it through first. However, just copying the directory and seeing what happens *shouldn't* end up hurting anyone. Idk. I mean, you can probably copy the droplet too.
 
 <br>
+
+----
+
 <br>
 
-### Copying an existing Django Project Folder
+# Can I run multiple django projects on a single droplet with this ?
+
+[Maybe this article will help](https://ubiq.co/database-blog/how-to-run-multiple-mysql-instances-on-same-machine/)
+
 My question here is this: If I already created a django project, can I simply do a git clone and then run it on the server? Probably not. There was a lot of config we did. I would like to separate that config from the project scaffolding project and the install process and isolate what needs to be done to properly
 1) Configure a django app on a ubuntu VPS
 2) Connect MYSQL with it
 
-##### Question: Can I run multiple django projects on a single droplet with this process?
 The only thing I have found so far is this file:
 `/etc/mysql/my.cnf`
 Which is shared by any MSQL servers on the droplet. So I don't know how multiple apps would share it, since it has a single variable called 'database' that can only point to one database:
@@ -169,7 +174,78 @@ So we should be able to link different apps to different `.cnf` files.
 
 <br>
 
-**Process for an existing app**
+<br>
+
+----
+
+<br>
+
+# Using Pipenv
+I probably should, right? I *think* it should work on the server. 
+I'll try installing it:
+`sudo apt install pipenv`
+And then, using the pipfile already there, I think I can just run `pipenv install`, right?
+Well I ran it, it's installing...stuff.
+It failed.
+
+ ```
+ Error: pg_config executable not found.
+
+ pg_config is required to build psycopg2 from source. Please add the directory
+
+ containing pg_config to the $PATH or specify the full executable path with the
+
+ option:
+
+ python setup.py build_ext --pg-config /path/to/pg_config build ...
+
+ or with the pg_config option in 'setup.cfg'.
+
+ If you prefer to avoid building psycopg2 from source, please install the PyPI
+
+ 'psycopg2-binary' package instead.
+
+ For further information please check the 'doc/src/install.rst' file (also at
+
+ <https://www.psycopg.org/docs/install.html>).
+ ```
+ 
+ Yeah I remember seeing psycopg, I think I've seen this before. I'll check my notes, but here's a though: do I need to use Pipenv on a droplet? I can probably just install stuff globally here.
+ 
+[Looked at this solution who](http://web.archive.org/web/20140615091953/http://goshawknest.wordpress.com/2011/02/16/how-to-install-psycopg2-under-virtualenv/) Who says I just need to install two more dependencies to fix this:
+
+`sudo apt-get install libpq-dev python-dev`
+So I did, then I ran pipenv install again.
+This time it seemed to work.
+Now I'll try `pipenv run su` again.
+
+Still doesn't work. But right, i need to enter the pipenv shell, right?
+
+`pipenv shell`.
+
+Right, okay that's the way. It now says I need to specify a version of python to work with, like this:
+
+`pipenv --python path/to/python`
+
+That's good.
+
+> Interesting: It's like this. Get your project's python version > make sure your env python version matches > then til pipenv to use that same python version
+
+I think that's it. Let's do it.
+
+Well, I'm ditching pipenv for now, I guess I've managed to install the dependencies I needed somehow by this point.
+
+<br>
+
+----
+
+<br>
+
+# Abbreviated Process for cloning an existing django app
+This is useful simply because you don't want to develop a django app on the server, duh. No IDE, no GUI tools, no file structure visualization. Possible, but it would definitely take longer.
+
+However, it *might* make sense to start the django app on the server, clone it and create a local branch, and then build it locally from that code just so you are testing out things both locally and on the server throughout the process i.e. packages, database connections, etc.
+
 > A) Setting up Configuration and Dependencies for Database
 1) Activate/create a virtual environment similiar enough to the Django one
 2) Set up the droplet's SSH key with github
@@ -177,8 +253,10 @@ So we should be able to link different apps to different `.cnf` files.
 4) Open settings.py
 	1) Change timezone to "America/New_York"
 	2) Add STATIC_ROOT variable: `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`
-	3) Add server to allowed hosts: `ALLOWED_HOSTS = ['your server IP address']`
-	4) Create superuser `python manage.py creatsuperuser`
+	3) Checkout any suspicious extra stuff in the settings.py file (I had stuff left over from a heroku deploy)
+	4) Add server to allowed hosts: `ALLOWED_HOSTS = ['your server IP address']`
+	5) This might be a good time to install modules django is using for your project.
+	6) Create superuser `python manage.py creatsuperuser`
 5) MYSQL Connection
 	1) With apt, install all dependencies needed for `mysqlclient`. You only have to do this once per server or droplet though, as the install are global (I'm pretty sure). There are quite a few:
 		1) `python3-dev`
@@ -235,6 +313,46 @@ sudo systemctl restart mysql
 5) migrate our Django app: `python manage.py migrate`
 6) Run server from proper directory: `python manage.py runserver your-server-ip:8000`
 
+Damn! Still saying this :       
+
+"Access denied for user 'wikiuser2'@'%' to database 'wiki'"
+
+So maybe my user really isn't set up right.
+
+Okay, made a new user very carefully and it worked. I must have just messed up both times. Or maybe the extra stuff I tried with the file messed everything up and it just needed to be refreshed again.
+
+
+
+
+
+# Log for cloning
+Okay I cloned my django project into my droplet.
+I had to install numpy.
+I sort of skipped setting up pyenv because it scares me and I didn't know how to tell it to work with my python environment / where python actually *was* (probably in the python environment lol)
+And I created a superuser mo with password mo
+And I created a new database called 'wiki'.
+Created wikiuser2
+I added in the info to both the original my.cnf AND to a new my2.cnf because I'm not sure what the right way to do it is and I want to see if I can pull off multiple databases at the same time. More is better!
+
+If that doesn't work
+1) go back and change database config in settings.py back to `my.cnf`
+2) If that doesn't work, delete `my.cnf` and then just use one block in `my.cnf` -- comment out the one from the blog app.
+
+Access denied for user `wikiuser2`! So either the user isn't set up right, or the (more likely) password isn't passed to django the right way.
+
+Okay, I changed to the settings.py file to `my.cnf` and I'm getting a different error. It says       
+
+"**Error: [Errno -3] Temporary failure in name resolution**"
+
+Altough damn, I forgot to the migration. Let me try again.
+
+Same error.
+
+And same error for `my2.cnf` also.
+
+Okay, time to do it the simple way!
+
+Damn, that worked. Don't know if SQL did though! I haven't changed anything about it.
 
 
 <br>

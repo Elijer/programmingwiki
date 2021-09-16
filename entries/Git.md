@@ -28,6 +28,22 @@ That should do it.
 ## Pushing a new branch to your remote
 [Here's a stack overflow thread about it](https://stackoverflow.com/questions/1519006/how-do-you-create-a-remote-git-branch)
 
+Make sure you are ON that branch.
+You can get the `remote-name` simply by running:
+
+`git remote -v`, it'll be the word at the beginning of both lines.
+
+Hint: the remote name is usually `origin`
+
+```
+git push <remote-name> <branch-name> 
+```
+
+And then, git prompts you, but you need to set the upstream for the branch like this:
+
+      
+`git push --set-upstream <remote-name> <branch-name>`
+
 
 ---
 https://stackoverflow.com/questions/62056294/github-folders-have-a-white-arrow-on-them

@@ -25,7 +25,7 @@ django_heroku.settings(locals())
 #### If this still doesn't work:
 Installing `postgresql` with homebrew worked for me, but I found another fix.
 
-I have not tried it, but It seems to be saying that in order to intall the `## psycopg2` dependency of django-heroku within a virtual env like pipenv, you[ need to do things differently than normally](http://web.archive.org/web/20140615091953/http://goshawknest.wordpress.com/2011/02/16/how-to-install-psycopg2-under-virtualenv/)
+I have not tried it, but It seems to be saying that in order to install the `## psycopg2` dependency of django-heroku within a virtual env like pipenv, you[ need to do things differently than normally](http://web.archive.org/web/20140615091953/http://goshawknest.wordpress.com/2011/02/16/how-to-install-psycopg2-under-virtualenv/)
 
 
 #### Here's a nice Pitfall article for Django + Heroku
