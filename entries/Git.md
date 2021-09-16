@@ -8,6 +8,21 @@ Git is a version control tool that can be used to keep track of versions of a so
 
 GitHub is an online service for hosting git repositories.
 
+##### Submodule problem
+If you accidentally create a git repository in a submodule of a git repo, it may cause some problems. You can tell if you've done this because a white arrow will appear on the blue folder of the sub-directory in your repo on github.com.
+
+[Here's how to fix it](https://stackoverflow.com/questions/62056294/github-folders-have-a-white-arrow-on-them)
+
+To summarize, just do this:
+1. Navigate into the sub-folder and delete the git file: `rm -rf .git`
+2. Navigate back into the main directory of your repo
+3. run this `git rm --cached {{your_subfolder_name_here}}``
+4. `git add --all`
+5. `git commit -m "destroyed submodule"`
+6. `git push`
+
+That should do it.
+
 ---
 
 ## Pushing a new branch to your remote
@@ -15,7 +30,7 @@ GitHub is an online service for hosting git repositories.
 
 
 ---
-
+https://stackoverflow.com/questions/62056294/github-folders-have-a-white-arrow-on-them
 
 ## Gitignore
 If you add a `.gitignore` file, it will instruct git not to track the files or directories included. A director can be included in file just by using a slash: `directory/`, whereas a file is ignored by using entire file name: `fileName.js`).

@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Django.md",
-            "mode": "source"
+            "file": "Deploys/Python + MySQL.md",
+            "mode": "preview"
           }
         }
       }
@@ -39,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "ssh",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -52,7 +52,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "548dd7b686fc8e13",
@@ -68,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Django.md",
+                "file": "Deploys/Python + MySQL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,15 +98,15 @@
   },
   "active": "1bbc38e2bf34313e",
   "lastOpenFiles": [
+    "Deploys/Python + MySQL.md",
+    "SQLite in Django.md",
+    "Ssh.md",
     "Django.md",
     "CSS.md",
+    "Git.md",
+    "Python.md",
     "Heroku/Heroku > Python.md",
-    "SQLite in Django.md",
-    "SQL.md",
-    "Ssh.md",
-    "NFTs.md",
-    "Mythical JS-First HTML.md",
-    "C-sharp.md",
-    "Css.md"
+    "Deploys/Untitled.md",
+    "SQL.md"
   ]
 }
