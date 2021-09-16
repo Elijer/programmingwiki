@@ -7,8 +7,11 @@
         "id": "1bbc38e2bf34313e",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "Deploys/Python + MySQL.md",
+            "mode": "preview"
+          }
         }
       }
     ],
@@ -66,6 +69,10 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
+=======
+                "file": "Deploys/Python + MySQL.md",
+>>>>>>> dev
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",

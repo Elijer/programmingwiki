@@ -36,3 +36,60 @@ What's happening here?
 5) `grid-template-columns: 1f 1fr 1fr 1fr;` This is the same as using repeat like this: `repeat(4, 1fr)`, but it's more DRY.
 6) What is a `fr` ? It's short for 'fraction'. It's actually brilliant. If you have this: `1fr`, then it basically stands for 1/1 of the available horizontal space. But if you have `1fr 1fr`, then each one is 1/2 of the available space. `1fr 1fr 1fr 1fr` identifies 4 sizes that are each 1/4th of the available space! It's nice cause then we don't need to do the math ourselves each time the available space changes. But we could if we wanted to, and us other units of measurement instead: `grid-template-columns: 100px 4em 4% 20pt`
 7) As you can see, we don't have to supply the `grid-template-columns` property with equal portions either. Normally when I think of a grid I think of equally spaced rows, but CSS grid is more flexible than that. We probably want to use fractions again though, to do something like this: `grid-template-columns: 1fr 1fr 4fr 2fr`. We just defined some rows with clear yet unequally sized columns.
+
+<br> 
+
+---
+
+<br>
+
+
+# Styling Images (IMG)
+Images are weird. At least when you select your own images as a developer, you know their dimensions. However, if images are supplied by the user, you may struggle to control the formatting of the image to handle all cases, mostly the range of image size and aspect ratio.
+
+**Solution 1:**
+This solution constrains the width *and* constrains the height *while* keeping the aspect ratio. How? Additional height is redirected out of what is displayed. I think you want to do this in *addition* to specifying the width of the image in the HTML, otherwise you will get all sorts of widths.
+
+*HTML*
+```HTML
+<img src="..." width="300px">
+```
+
+*CSS*
+```css
+img {
+	object-fit: cover;
+	width: 100%;
+	height: 250px;
+}
+```
+
+This approach seems to work really well with CSS grid.
+
+
+#### Properties to note:
+```css
+object-fit: cover;
+width: 100%;
+height: 250px;
+display: block;
+max-width:230px;
+max-height:95px;
+width: auto;
+height: auto;
+```
+
+<br> 
+#### Links
+- [CSS force image resize and keep aspect ratio](https://stackoverflow.com/questions/12991351/css-force-image-resize-and-keep-aspect-ratio)
+
+
+<br> 
+
+---
+
+<br>
+
+
+# Inline Elements
+Can't be given vertical margins! Only horizontal ones.
