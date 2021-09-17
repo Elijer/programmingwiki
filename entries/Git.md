@@ -67,6 +67,7 @@ git rm -r --cached <folder>
 
 ## Clutch Shortcuts
 1) `git add --a` is shorthand for `git add --all`
+2) Compare two branches like this: `git diff branch1..branch2`
 
 ----
 
