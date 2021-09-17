@@ -31,17 +31,18 @@ def search_entries(bigList, substring):
     return newList
 
 def save_to_db(title, content):
-    if Entry.objects.filter(ref=title.lower()).exists():
-        e = Entry.objects.get(ref=title.lower())
-        e.content = content
-        e.save()
-    else:
-        e = Entry(
-            ref = title.lower(),
-            title = title,
-            content = content
-        )
-    e.save();
+    if content:
+        if Entry.objects.filter(ref=title.lower()).exists():
+            e = Entry.objects.get(ref=title.lower())
+            e.content = content
+            e.save()
+        else:
+            e = Entry(
+                ref = title.lower(),
+                title = title,
+                content = content
+            )
+        e.save();
 
 def save_entry(title, content):
     # Saves an encyclopedia entry, given its title and Markdown
