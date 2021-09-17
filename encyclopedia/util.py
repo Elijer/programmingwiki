@@ -59,10 +59,20 @@ def save_entry(title, content):
 
 
 def get_entry(title):
-    ## Retrieves an encyclopedia entry by its title. If no such
-    ## entry exists, the function returns None.
+    # A lot of this will be repeated from save_to_db() and should be consolidated into a single function
+    ref = title.lower()
     try:
-        f = default_storage.open(f"entries/{title}.md")
+        e = Entry.objects.get(ref=ref)
+        capsTitle = e.title # this is the capsensitive version, while entry.ref is always lowercase
+        f = default_storage.open(f"entries/{capsTitle}.md")
         return f.read().decode("utf-8")
     except FileNotFoundError:
-        return None
+        return "Wasn't able to find a content file for this entry"
+
+    ## Retrieves an encyclopedia entry by its title. If no such
+    ## entry exists, the function returns None.
+    #try:
+     #   f = default_storage.open(f"entries/{title}.md")
+      #  return f.read().decode("utf-8")
+    #except FileNotFoundError:
+     #   return None
