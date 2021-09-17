@@ -1,6 +1,6 @@
 # CSS
 
-CSS is a language that can be used to add style to an [HTML](../pages/HTML) page. It is an acronym that stands for "Cascading Style Sheets", which makes web design sound so picturesque, and is clearly a term from the 80's when everything was rainbows and waterfalls. In fact, the creator of CSS is rumored to have been listening to TLC "Don't Go Chasing Waterfalls" when she came up with the idea.
+CSS is a language that can be used to add style to an [HTML](../pages/HTML) page. It is an acronym that stands for "Cascading Style Sheets", which was clearly termed in the late 80's when everything was rainbows and cocaine until the end of the dot com boom. The creator of CSS is rumored to have been listening to TLC "Don't Go Chasing Waterfalls" when she invented it.
 
 Cool. Seriously cool.
 
