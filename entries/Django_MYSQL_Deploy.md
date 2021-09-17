@@ -22,36 +22,21 @@ How To Link Ladder
 
 ### Cheatsheet
 
-  
 
-| Purpose | Command | Notes |
+Login to droplet console: `ssh jah@157.230.2.209`
+Activate virtual environment: `source environments/env1/bin/activate`
+Reboot: `sudo reboot`
+Exit MYSQL server: `exit`
+Login to MYSQL server as 'root':  `sudo mysql -u root`
+Login to MYSQL Server as 'wikiuser3': `sudo mysql -u wikiuser3`
+Run server: `python manage.py runserver 157.230.2.209:8000`
+URL: [This one](http://157.230.2.209:8000/)
 
-| ------------------------------------ | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 
-| Login to droplet console | `ssh jah@157.230.2.209` | |
-
-| Activate virtual environment | `source environments/env1/bin/activate` | where 'environments' is the folder I store my virtual envs, like 'env1' |
-
-| Reboot | `sudo reboot` | |
-
-| Exit MYSQL server | `exit` | |
-
-| Login to MYSQL server as 'root' | `sudo mysql -u root` | |
-
-| Login to MYSQL Server as 'wikiuser3' | `sudo mysql -u wikiuser3` | |
-
-| Run server | `python manage.py runserver 157.230.2.209:8000` | |
-
-| URL | [This one](http://157.230.2.209:8000/) | |
-
-| | | |
-
-  
-  
 
 ### Process
 
-  
+ 
 
 Create or sign in to your digital ocean account and then [go to the console.](https://cloud.digitalocean.com/projects/7294f030-bc4d-4173-b988-454633df55e7/resources?i=4f48a2)
 
