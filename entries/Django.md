@@ -416,5 +416,46 @@ And that should do it.
 
 <br>
 
+### How to balance Local with Server Environment regarding Version Control
+I *want* to create changes to the way the app functions locally and then push it to the server, but there are a few files that have separate configurations by nature of being totally separate environments:
+1) settings.y
+	1) has a different database configuration
+2) sqlite.db
+	1) Is present locally but not needed on server
+	2) So it's not really a problem
+
+So after that short reflection, it looks like `settings.py` is really the only thing that needs to be different.
+
+In firebase, what I would probably do is check to see if the url is localhost or something, and if it *is* running a localhost db config block, otherwise run the server one. I wouldn't be surprised if this exists on django.
+
+Let's see what people say.
+
+[This guy has a similiar question.](https://stackoverflow.com/questions/1626326/how-to-manage-local-vs-production-settings-in-django)
+
+Ideas
+1) It looks like settings.py files can be split, which could be perfect.
+2) Slight improvement on that, MiniQuark has a common.py, prod.py and local.py file, which would allow things to remain separate. That actually is starting sound very simple. I still don't quite understand how it switches betweent them. Sounds like it's a manual thing.
+
+Hmm Not totally satisfied with the answers. Let's look at this site:
+
+[DjangoStars](https://djangostars.com/blog/configuring-django-settings-best-practices/)
+Okay after reading this I understand the local_settings.py pattern and I think that' what I'm going to use but I see that is does have a few major disadvantages.
+
+Here's the idea. You have two files:
+- settings.py
+- local_settings.py
+
+In settings.py, you check to see if local_settings.py exists. You put local_settings.py into .gitignore to keep it out of version control, and probably keep a copy of it somewhere on your computer, maybe even an example of it in your repo or your repo's readme.
+
+You *don't* include this VCS-external file on your server. Just your local environment. You document it in the readme and let people know they will need to get this file.
+
+Then, in settings.py, when you check if it exists, it overrides the default (server) settings if it is found. Otherwise, it just uses the normal server settings.
+
+<br>
+
+-----
+
+<br>
+
 ### The History of Django
 Apparently is was originally created by news organizations who would use the admin app to add news articles easily
