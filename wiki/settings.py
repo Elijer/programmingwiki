@@ -126,4 +126,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Auto key setting. Got it from here:
 # https://stackoverflow.com/questions/66971594/auto-create-primary-key-used-when-not-defining-a-primary-key-type-warning-in-dja
-DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+from .local_settings import *
