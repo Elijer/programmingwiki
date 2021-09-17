@@ -111,12 +111,16 @@ def alreadyExists(request, entry):
     })
 
 def editPage(request, entry):
+
     content = util.get_entry(entry)
-    # converted_content = convertToMarkdown(content)
-    return render(request, "encyclopedia/edit.html", {
-        "title": entry.capitalize(),
-        "content": content
-    })
+    if content == None:
+            return HttpResponse("Something went wrong and we either couldn't find this entry, OR the entry has no content. It may be a caps-sensitivity issue.")
+    else:
+        # converted_content = convertToMarkdown(content)
+        return render(request, "encyclopedia/edit.html", {
+            "title": entry.capitalize(),
+            "content": content
+        })
 
 def changeEntry(request):
     if request.method == "POST":
