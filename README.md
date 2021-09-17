@@ -11,8 +11,29 @@ To demystify these things, here are the docs for Django's URL syntax:
 
 It has all that stuff in it.
 
-### Questions
-If a layout template that other pages use requires say, a form as a variable, do I need to then pass that in to every single page that uses that template? I don't know how else it would get the data. However, I tried omitting it, and the form still seemed to work. So the answer may be yes, but I can't explain why.
+### Running this project locally/serverside
+I'm using the local_settings.py approach.
+
+This means you'll need to create a file like this to run this locally:
+
+```python
+#local_settings.py
+
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+ALLOWED_HOSTS = []
+DEBUG = True
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+```
+
+Make sure to have this file inside of the wiki/ directory and things will run smoothly. Otherwise, the default settings.py settings are configured to connect to a MYSQL server. You can check out the documentation on how this is done in entries/Deploys/Python + MySQL.md in the Digital Ocean deploy section.
 
 ### Pain Points
 1. This sucked:
