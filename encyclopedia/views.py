@@ -52,7 +52,7 @@ def entry(request, entry):
         converted_content = convertToMarkdown(content)
         return render(request, "encyclopedia/entry.html", {
             "content": converted_content,
-            "title": entry.capitalize(),
+            "title": entry,
             "form": NewSearchForm()
         })
     else:
@@ -118,7 +118,7 @@ def editPage(request, entry):
     else:
         # converted_content = convertToMarkdown(content)
         return render(request, "encyclopedia/edit.html", {
-            "title": entry.capitalize(),
+            "title": entry,
             "content": content
         })
 

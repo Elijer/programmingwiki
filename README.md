@@ -35,6 +35,12 @@ DATABASES = {
 
 Make sure to have this file inside of the wiki/ directory and things will run smoothly. Otherwise, the default settings.py settings are configured to connect to a MYSQL server. You can check out the documentation on how this is done in entries/Deploys/Python + MySQL.md in the Digital Ocean deploy section.
 
+If you don't do this, you will probably get an error message like this on your local environment:
+```
+django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module.
+Did you install mysqlclient?
+```
+
 ### Pain Points
 1. This sucked:
 `django decoding to str: need a bytes-like object, NoneType found`
