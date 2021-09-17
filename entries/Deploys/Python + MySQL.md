@@ -330,7 +330,7 @@ Okay, made a new user very carefully and it worked. I must have just messed up b
 
 
 
-# Log for cloning
+# Log for Cloning Process
 Okay I cloned my django project into my droplet.
 I had to install numpy.
 I sort of skipped setting up pyenv because it scares me and I didn't know how to tell it to work with my python environment / where python actually *was* (probably in the python environment lol)
@@ -359,11 +359,22 @@ Okay, time to do it the simple way!
 
 Damn, that worked. Don't know if SQL did though! I haven't changed anything about it.
 
+<br>
+
+-----
+
+<br>
+
+# Running Django on the Server Legit
+So I've noticed that if we're just using `manage.py runserver`, it closes when we log out. Here are some early ideas about [how to keep it running, like servers are supposed to do.](https://stackoverflow.com/questions/1188542/django-runserver-permanent)
 
 <br>
 
 -----
 
+<br>
+<br>
+<br>
 <br>
 
 

@@ -457,5 +457,7 @@ Then, in settings.py, when you check if it exists, it overrides the default (ser
 
 <br>
 
+https://stackoverflow.com/questions/1188542/django-runserver-permanent
+
 ### The History of Django
 Apparently is was originally created by news organizations who would use the admin app to add news articles easily
