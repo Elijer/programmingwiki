@@ -67,5 +67,10 @@ def get_entry(title):
         capsTitle = e.title # this is the capsensitive version, while entry.ref is always lowercase
         f = default_storage.open(f"entries/{capsTitle}.md")
         return f.read().decode("utf-8")
+    elif default_storage.exists(f"entries/{title}.md"):
+        f = default_storage.open(f"entries/{title}.md")
+        content = f.read().decode("utf-8")
+        save_to_db(title, content)
+        return f.read().decode("utf-8")
     else:
         return None
