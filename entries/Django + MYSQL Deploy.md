@@ -450,5 +450,3 @@ So it looks like we can go to the site provided and check if their default templ
 Looks like they actually have a template for Django in here, commented out.
 
 So look at the template, and also definitely look at your wsgi.py file in your app (the one django created)
-
-Be very careful but uncommenting their template. I was getting an error about the `then:`

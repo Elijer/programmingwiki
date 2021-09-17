@@ -1,4 +1,5 @@
 # C Sharp
+Is it a musical note? Yes. Famously, early versions of C# would only compile when a c-sharp was played on a concert clarinet nearby.
 
 - 'strongly-typed' language: data types must be defined, which helps avoid errors
 - 'statically-typed'

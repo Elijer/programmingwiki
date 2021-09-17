@@ -31,17 +31,18 @@ def search_entries(bigList, substring):
     return newList
 
 def save_to_db(title, content):
-    if Entry.objects.filter(ref=title.lower()).exists():
-        e = Entry.objects.get(ref=title.lower())
-        e.content = content
-        e.save()
-    else:
-        e = Entry(
-            ref = title.lower(),
-            title = title,
-            content = content
-        )
-    e.save();
+    if content:
+        if Entry.objects.filter(ref=title.lower()).exists():
+            e = Entry.objects.get(ref=title.lower())
+            e.content = content
+            e.save()
+        else:
+            e = Entry(
+                ref = title.lower(),
+                title = title,
+                content = content
+            )
+        e.save();
 
 def save_entry(title, content):
     # Saves an encyclopedia entry, given its title and Markdown
@@ -65,6 +66,11 @@ def get_entry(title):
         e = Entry.objects.get(ref=ref)
         capsTitle = e.title # this is the capsensitive version, while entry.ref is always lowercase
         f = default_storage.open(f"entries/{capsTitle}.md")
+        return f.read().decode("utf-8")
+    elif default_storage.exists(f"entries/{title}.md"):
+        f = default_storage.open(f"entries/{title}.md")
+        content = f.read().decode("utf-8")
+        save_to_db(title, content)
         return f.read().decode("utf-8")
     else:
         return None
