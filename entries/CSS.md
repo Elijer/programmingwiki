@@ -1,6 +1,6 @@
 # CSS
 
-CSS is a language that can be used to add style to an [HTML](../pages/HTML) page.
+CSS is a language that can be used to add style to an [HTML](../pages/HTML) page. It is an acronym that stands for "Cascading Style Sheets", which makes web design sound so picturesque, and is clearly a term from the 80's when everything was rainbows and waterfalls. In fact, the creator of CSS is rumored to have been listening to TLC "Don't Go Chasing Waterfalls" when she came up with the idea.
 
 <br>
 

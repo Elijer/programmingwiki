@@ -11,12 +11,15 @@ How To Link Ladder
 
 ### Cheatsheet
 
- | Purpose                      | Command                            | Notes |
- | ---------------------------- | ---------------------------------- | ----- |
- | Login to droplet console     | `ssh jah@157.230.2.209`            |       |
- | Activate virtual environment | `source {env name}/bin/activate` | run inside 'environments' directory  |
- | Reboot                       | `sudo reboot`                      |       |
- |     Exit server                         |               `exit`                     |       |
+ | Purpose                              | Command                          | Notes                               |
+ | ------------------------------------ | -------------------------------- | ----------------------------------- |
+ | Login to droplet console             | `ssh jah@157.230.2.209`          |                                     |
+ | Activate virtual environment         | `source {env name}/bin/activate` | run inside 'environments' directory |
+ | Reboot                               | `sudo reboot`                    |                                     |
+ | Exit MYSQL server                          | `exit`                           |                                     |
+ | Login to MYSQL server as 'root'      | `sudo mysql -u root`             |                                     |
+ | Login to MYSQL Server as 'wikiuser3' | `sudo mysql -u wikiuser3`        |                                     |
+ |                                     |                                  |                                     |
  
 
 
