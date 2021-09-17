@@ -61,10 +61,10 @@ def save_entry(title, content):
 def get_entry(title):
     # A lot of this will be repeated from save_to_db() and could be consolidated into a single function
     ref = title.lower()
-    try:
+    if Entry.objects.filter(ref=title.lower()).exists():
         e = Entry.objects.get(ref=ref)
         capsTitle = e.title # this is the capsensitive version, while entry.ref is always lowercase
         f = default_storage.open(f"entries/{capsTitle}.md")
         return f.read().decode("utf-8")
-    except FileNotFoundError:
+    else:
         return None

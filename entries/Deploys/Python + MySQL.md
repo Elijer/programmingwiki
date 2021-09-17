@@ -11,17 +11,17 @@ How To Link Ladder
 
 ### Cheatsheet
 
- | Purpose                              | Command                                         | Notes                               |
- | ------------------------------------ | ----------------------------------------------- | ----------------------------------- |
- | Login to droplet console             | `ssh jah@157.230.2.209`                         |                                     |
- | Activate virtual environment         | `source {env name}/bin/activate`                | run inside 'environments' directory |
- | Reboot                               | `sudo reboot`                                   |                                     |
- | Exit MYSQL server                    | `exit`                                          |                                     |
- | Login to MYSQL server as 'root'      | `sudo mysql -u root`                            |                                     |
- | Login to MYSQL Server as 'wikiuser3' | `sudo mysql -u wikiuser3`                       |                                     |
- | Run server                           | `python manage.py runserver 157.230.2.209:8000` |                                     |
- | URL                                  | [This one](http://157.230.2.209:8000/)          |                                     |
- |                                      |                                                 |                                     |
+ | Purpose                              | Command                                         | Notes                                                                                                             |
+ | ------------------------------------ | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+ | Login to droplet console             | `ssh jah@157.230.2.209`                         |                                                                                                                   |
+ | Activate virtual environment         | `source environments/env1/bin/activate`         | where 'environments' is the folder I store my virtual envs, like 'env1' |
+ | Reboot                               | `sudo reboot`                                   |                                                                                                                   |
+ | Exit MYSQL server                    | `exit`                                          |                                                                                                                   |
+ | Login to MYSQL server as 'root'      | `sudo mysql -u root`                            |                                                                                                                   |
+ | Login to MYSQL Server as 'wikiuser3' | `sudo mysql -u wikiuser3`                       |                                                                                                                   |
+ | Run server                           | `python manage.py runserver 157.230.2.209:8000` |                                                                                                                   |
+ | URL                                  | [This one](http://157.230.2.209:8000/)          |                                                                                                                   |
+ |                                      |                                                 |                                                                                                                   |
  
 
 
