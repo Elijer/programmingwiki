@@ -1,8 +1,8 @@
 from django.db import models
 
 class Entry(models.Model):
-    ref = models.CharField(max_length=32, null=False, unique=True, primary_key=True)
-    title = models.CharField(max_length=32)
+    ref = models.CharField(max_length=50, null=False, unique=True, primary_key=True)
+    title = models.CharField(max_length=50)
     content = models.TextField()
 
     #def save(self, *args, **kwargs):
