@@ -49,9 +49,9 @@ Otherwise compiling will runan error.
 ### Math
 If a less exact data type is added to a more exact one, the result will always be returned in the more exact data type.
 
-However, two integers will always return an integer, and so on.
+However, two integers will always return an integer.
 
-**Incrementing and decremting**
+**Incrementing and decrementing**
 Incrementing by 1:
 `++`
 Decrementing by 1:

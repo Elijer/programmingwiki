@@ -86,3 +86,48 @@ GUI.enabled = true;
 Just create this file, name it something like ReadOnlyAttribute and put it in a few folder in your Assets directoy. Call it Attributes. You'll want to separate files like this so that if you ever write Assembly Directives, the editor files are already grouped together. Also for production I guess; since this is editor-only behavior, you don't want it bloated down the game you end up shipping as the player won't be using the Unity Editor to play it.
 
 For more on creating AttributeDrawers, [here's where I found this solution.](https://forum.unity.com/threads/how-do-you-disable-inspector-editing-of-a-public-variable.142100/)
+
+### Canvas
+A "Canvas" is a GameObject with a "Canvas" property attached to it.
+
+##### Rendermode
+There are three modes a canvas but in:
+1. Overlay
+2. Screen Space
+3. World Space
+
+##### UI Elements
+These are the elements that can be added to a canvas element.
+
+using TMPro
+
+```HTML
+<TextMeshPro> works with the MeshRenderer
+<TextMeshProUGUI> works with CanvasRenderer
+```
+
+# Guide to Referencing Components from other Components
+
+Example Types:
+
+```C#
+GameObject someGameObject
+Light someLight
+ScriptName someScript
+```
+
+So it looks like types are always uppercased, no-spaced version of their 
+
+### Unity Naming Conventions
+Here are some different cases:
+- PascalCase
+- camelCase
+- SNAKE_CASE
+- kebab-case
+
+In Unity:
+- Types (classes, structs, enums) and Methods are PascalCased
+- Fields and properties are camelCased
+
+##### This can get confusing with Fields and Properties
+The `Transform` class has an accessor called `transform`.

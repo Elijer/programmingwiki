@@ -1,6 +1,32 @@
 # Javascript
 
-The language that web browsers parse in order to add logic to websites.
+The language that web browsers parse in order to add logic to websites. Serverside rendering can be powerful, but so can clientside
+
+If you wanted to contrast this with Django, it looks like this: whenever you want to change or edit data in a webpage served by Django, you have to revresh the page because you are actually getting a file form the server.
+
+The big whoop with javascript? It's not complicated: you don't need to reload the page. That's pretty much it.
+
+# The Script Tag
+Can be included in the head or the body of an html file.
+
+# Event Driven Programming
+It's possible to add "listeners" to a web-page in a way that isn't really possible with other languages. Because JS is what the browser uses, Javascript can *interrupt* the browser processes with code you want conneted to an event you've specified.
+
+# DOM Lifecycle / Events
+- **DOMContentLoaded**:  DOM is ready, so the handler can lookup DOM nodes, initialize the interface.
+- **load**: Not only HTML is loaded, but also all external resources; image, style, etc.
+- **beforeunload/unload**: The user is leaving the page.
+
+Autofill: Browser's usually autofill things on **DOMContentLoaded.**
+
+**window.onload**: Not really sure how this is different than the **load** event.
+**window.onunload**: Likewise, not sure how this is different than the **unload** event.
+
+**document.readyState**: This tells us what state our page is in -  has the DOM loaded? The resources? It can have these states:
+
+-   `"loading"` – the document is loading.
+-   `"interactive"` – the document was fully read.
+-   `"complete"` – the document was fully read and all resources (like images) are loaded too.
 
 # HTTP in JS
 ### 'Fetch' function
@@ -15,6 +41,33 @@ fetch('/emails/inbox')
 
     // ... do something else with emails ...
 });
+```
+
+# Variables
+`const`
+will never change
+
+
+`var` and `let`
+can change
+
+Then how are `var` and `let` different?
+
+`var` is function scoped nad `let` is block scoped.
+
+# Interacting with the DOM
+`document.getElementByID("id")`
+
+`document.querySelector('h1')`
+
+# Functions
+1) 
+```var func = function(){
+}
+```
+2) 
+```function func(){
+}
 ```
 
 
@@ -94,3 +147,4 @@ function(someObject){
 This function has the ability to add a property to an object. I don't know *why* you would have to do this, but sometimes you gotta do word stuff.
 
 [This stackoverflow answer breaks it down pretty well.](https://stackoverflow.com/questions/25187903/what-do-curly-braces-around-javascript-variable-name-mean)
+
