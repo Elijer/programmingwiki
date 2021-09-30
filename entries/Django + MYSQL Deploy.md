@@ -13,14 +13,14 @@ How To Link Ladder
 
  | Purpose                              | Command                                         | Notes                                                                                                             |
  | ------------------------------------ | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
- | Login to droplet console             | `ssh jah@157.230.2.209`                         |                                                                                                                   |
+ | Login to droplet console             | `ssh {superuser}@{your server ip}`                         |                                                                                                                   |
  | Activate virtual environment         | `source environments/env1/bin/activate`         | where 'environments' is the folder I store my virtual envs, like 'env1' |
  | Reboot                               | `sudo reboot`                                   |                                                                                                                   |
  | Exit MYSQL server                    | `exit`                                          |                                                                                                                   |
  | Login to MYSQL server as 'root'      | `sudo mysql -u root`                            |                                                                                                                   |
- | Login to MYSQL Server as 'wikiuser3' | `sudo mysql -u wikiuser3`                       |                                                                                                                   |
- | Run server                           | `python manage.py runserver 157.230.2.209:8000` |                                                                                                                   |
- | URL                                  | [This one](http://157.230.2.209:8000/)          |                                                                                                                   |
+ | Login to MYSQL Server as 'wikiuser3' | `sudo mysql -u {sql_superuser}`                       |                                                                                                                   |
+ | Run server                           | `python manage.py runserver {your_server_ip}:8000` |                                                                                                                   |
+ | URL                                  | `http://{your url}:8000/`       |                                                                                                                   |
  |                                      |                                                 |                                                                                                                   |
  
 
@@ -40,11 +40,11 @@ I'm choosing the cheapest option.
 > Tutorial Link 2
 
 Now I'm going to follow the instructions in link #1.
-- Cool. I created a superuser named jah with a password voodoo
+- Cool. I created a superuser named jah with a password {somepassword}
 - I'm going to skip the firewall step because it will just get in the way.
 - Make sure we can log into our new superuser directly
 
-Cool. Did that. I can log in like this now: `ssh jah@157.230.2.209`
+Cool. Did that. I can log in like this now: `ssh superuse@your_server_ip`
 And I can use sudo with this guy, which is good.
 
 > On to tutorial link 3: How To Install Python 3 and Set Up a Programming Environment on an Ubuntu 20.04 Server
@@ -67,7 +67,7 @@ Looks like the first thing we install is the MYSQL server. Dope. We're gonna nee
 
 But where should we create the app directory?
 
-home>jah>probably here
+home>{your_superuser}>probably here
 
 create it with `mkdir` and install django to whatever python environment you want to be in.
 
@@ -89,7 +89,7 @@ Okay, looks like there are two things in this new directory: `manage.py` and the
 > SHIT. When I run createsuperuser, I get this error:
 -  `django.db.utils.OperationalError: no such table: auth_user`
 -  Don't panic. You just need to migrate django's initial database. Run this:  `./manage.py migrate`
-- I named my superuser the default, 'jah'
+- I named my superuser the default
 
 > Install the MYSQL Database Connector
 - We'll do whatever this is: "So, we will install the database connector, `mysqlclient`, which is a forked version of `MySQLdb`."
@@ -110,7 +110,7 @@ Okay, looks like there are two things in this new directory: `manage.py` and the
 - Now we create a new database, called `blog_data`. But of course we could call it anything:
 - `CREATE DATABASE blog_data;``
 - Okay so we've been doing this stuff with root, but now we're going to create a user with limited priveledges, just like for the SSH server. I'm going to call this one djangouser too, which hopefully helps me not get it confused with other stuff. Don't forget to change the password to whateve you want.
-- `CREATE USER 'djangouser'@'%' IDENTIFIED WITH mysql_native_password BY 'voodoo';`
+- `CREATE USER 'djangouser'@'%' IDENTIFIED WITH mysql_native_password BY '{your password here}';`
 - Then we set up their priveleges: `GRANT ALL ON blog_data.* TO 'djangouser'@'%';`
 - And do something weird, called "flushing priveleges", which I guess just refreshes user priveleges so that the ones we just made get reflected.
 - Okay done! Now we can exit with one of these commands: `EXIT` or typing ctr + D
