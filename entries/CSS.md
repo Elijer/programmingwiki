@@ -95,3 +95,110 @@ height: auto;
 
 # Inline Elements
 Can't be given vertical margins! Only horizontal ones.
+
+<br> 
+
+---
+
+<br>
+
+# Animations
+```css
+
+@keyframes grow {
+	from {
+		font-size: 20px;
+	}
+	
+	to {
+		font-size: 100px;
+}
+
+
+h1 {
+	animation-name: grow;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	
+}
+```
+
+We can do `from` and `to`, but we can add other keyframes if we want too! We can use percentages.
+
+```css
+
+keyframes move {
+	0% {
+		left: 0%;
+	}
+	
+	50% {
+		left: 50%;
+	}
+	
+	100% {
+		left: 0%;
+	}
+}
+
+```
+
+We can also repeat animations with `animation-iteration-count`:
+
+```css
+
+@keyframes grow {
+	from {
+		font-size: 20px;
+	}
+	
+	to {
+		font-size: 100px;
+}
+
+
+h1 {
+	animation-name: grow;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: 2;
+}
+```
+
+And if you want you can set `animation-iteration-count:` to `infinite` if you don't want it to ever stop.
+
+And of course you can use javasript to control the animations as well.
+
+```javascript
+document.addEventLister('DOMContentLoaded, function(){
+	const el = document.querySelector('h1');
+	el.style.animationPlayState = 'paused'
+}')
+
+some listener {
+	if (el.style.animationPlayState === 'paused'){
+		el.style.animationPlayState === "running";
+	} else {=  
+		el.style.animationPlayState === "running";
+	}
+}
+```
+
+Okay question: everything else pretty much makes sense, but what is this animation fill mode property?
+
+[Here's a link to MDN for that.](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-fill-mode)
+
+It seems to basically tell our element what to do when the animation *isn't* happening. Consider this - you tell an element to move from square one to square 4 in 2 seconds. Once it's done, where will it be? That's what `animation-fill-mode` is for.
+
+Here are our options for it:
+- `forwards`
+- `none`: 
+- `backwards`
+- `both`
+
+It's kinda confusing tbh. Look at the docs.
+
+There's another property called `animation-direction`, which ointeracts with `animation-fill-mode`, so keep an eye out for that.
+
+
+

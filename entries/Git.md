@@ -131,3 +131,68 @@ You can format things farther if you want:
 `git log --pretty=format:"<options>"`
 
 There are so many options though,[ better just to look at the docs.](http://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
+
+
+# Stash
+[Source](https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning)
+
+Stash is for that very common situation where you've worked on a bunch of stuff, but it's kinda nonsense and you want to work on something else but you don't want to commit it. Stash let's you keep it, just in case, without commiting. Simply run
+
+```console
+git stash
+```
+
+Git will take you back to your last commit on your current branch, and if you do `git status`, you will see that your current directory is now clean. No uncommited files, no staged files -- it's as if you've just ran your last commit.
+
+You can switch branches from here, do whatever and come back. If you want to see the changes you've stashed, run
+
+```console
+git stash list
+```
+
+which will give you a list of your stashes a hash for each one.
+
+`git stash apply` applies the changes of the most recent stash, and something like `git stash apply stash@{2}` will specify a specific stash to apply if there are multiple.
+
+```console
+git stash apply
+```
+
+You don't have to stash things to the same branch they are from though!
+
+"You can also have modified and uncommitted files in your working directory when you apply a stash — Git gives you merge conflicts if anything no longer applies cleanly."
+
+Apparently git stash doesn't re-stage files that were staged. It applies your changes to your files, but you have to stage them yourself.
+
+If you decide you actually *don't* want the stashed work you applied, run `git stash drop` with the name of the stash you want to remove:
+
+```console
+git stash drop stash@{0}
+```
+
+**Creative Stashing**
+
+`git stash --keep-index`
+This tells Git to not only include all staged content in the stash being created, but simultaneously leave it in the index.
+So I guess you would use this if...things are about to get hairy, and you might want to return to your current point, but so far so good -- no errors, everything seems refacturable and fine. You're just a little...nervous. Then, when shit hits the fun, you can revert and apply the stash, which will give you a second chance at refacturing from that safe point. It's like, 'quick-save'. You can't reboot from that point when you start up the game again, but if you die then you don't have to go all the way back to the last level (commit).
+
+```console
+git stash --patch
+```
+
+It super cool and I'm excited to use it. This command will cycle you through your changes, showing you additions and deletions, and ask you which ones you want to stage.
+
+**Heads up**
+Git will only stash tracked files! This seems pretty obvious, but I guess you can have created a new file and then stashed without thinking about it being untracked. From my perspective now, you should just track that new file before stashing, but there is apparently an option to stash untracked files too, with the  `--include-untracked` flag:
+```console
+--include-untracked
+```
+
+or simply:
+
+```console
+-u
+```
+
+This won't incude excplicitly `.gitignore`'d files. If you want to include those too, which I can actually see you wanting in certain niche cases, do this:
+

@@ -183,6 +183,8 @@ To go even further with the concept, let's print the following line:
 
 This line will print the same result of: `Window {...}`
 
+Another super simple way to think of `this` when we are using event listeners is that `this` just refers to the element who called/recieved the event. If it's an `onclick` handler for a button, then `this` will refer to that button.
+
 <br>
 
 ----
@@ -284,6 +286,43 @@ person[str]
 
 ```
 
+# The Spread Operator
+Sometimes, when using objects in JS, you will come into a problem that looks like this:
+```javascript
+var someObject = {
+	str1: "This is a pretty complicated object",
+	explanation: {
+		p1: "it just has a lot of",
+		p2: "different parts"
+	},
+	conclusion: "and if we want to update multiple parts of it, it could be tricky."
+}
+```
+
+It's not really that bad. We can still update it by doing this:
+
+```javascript
+someObject.explanation.p1 = "It just has a lot of"
+someObject.explanation.p2 = "different PARTS."
+someObject.conclusion: "And if..."
+```
+
+Which is aight. But it's verbose. There's a nicer way:
+
+```javascript
+someObject = {
+	...someObject,
+	explanation: {
+		p1: "whatever",
+		p2: ""
+	}
+}
+```
+
+This `...someObject` is called the spread operator, and it is an ellipses followed by the object that you want to 'fill in the cracks' of your current object with. In this case, we are using the same object. It says, everything should stay the same except for whatever parameters I am defining.
+
+You may never have to use this. It is, however, useful in setting state in the React framework.
+
 <br>
 
 ----
@@ -340,3 +379,84 @@ fetch('https://someurl.api.io')
 
 # Null vs. Undefined vs. ""
 What is the difference??? I !know.
+
+<br>
+
+----
+
+<br>
+ 
+
+# Single-Page Applications
+Single page applications is a modern web design paradigm. It means creating a web page that doesn't require refreshing the page or using HTTP routes in order to update the renering of data.
+
+This is done by advanced manipulation of the DOM. It's popular because it's faster and leads to a better user experience.
+
+##### Not loading the entire website for each page though
+We can do this by fetching new data for each page. Sounds kind of weird though, right? It's like, we're going through all this effort to *not* have multipage HTTP driven sites, but then we're still using the same stuff. We're just avoiding that refresh.
+
+- Gained: better load times in efficiently loading what you want to change instead of the entire page
+- Lost: url organization, that's bookamarkable and stuff
+
+But for the URL organization stuff, we can simulate that kinda it sounds like.
+
+# Simulating URL Routing
+
+1)
+
+**history.pushState(data, title,  url_string)**
+Adds a new element to the browsing history.
+```javascript
+let str = "want"
+history.pushState({data: someData}, "", `theURLI${str}`);
+```
+
+2)
+
+**window.onpopstate**
+This tells the browser what to do when the user presses the back button. You need to record state in order to do this though. Don't really know how to do that yet.
+```javascript
+// when you go back in the history
+window.onpopstate = function(event){
+	showSection(event.state.section)
+	// do something
+}
+```
+
+3)
+
+I think there's still something missing though, right? Because we can't get the right data just by going to the urls that we're pushing to our history.
+
+<br>
+
+----
+
+<br>
+
+# The Window Object
+What is the window object? It's sort of everything. Here are some useful properties
+
+`window.innerWidth`
+How wide is the window?
+
+`window.innerHeight`
+How high is the window?
+
+`window.scrollY`
+How many pixels down have I scrolled?
+
+`window.onscroll`
+This is run when the user scrolls.
+
+
+<br>
+
+----
+
+<br>
+
+# The Document Object
+The document doesn't always fit inside of the window, but the data is still ready to be rendered.
+
+`document.body.offsetHeight`
+How tall is the entire document
