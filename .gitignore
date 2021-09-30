@@ -5,4 +5,5 @@
 __pycache__/
 local_settings.py
 entries/.obsidian/workspace
+entries/Secret/
 wiki/local_settings.py
